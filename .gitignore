@@ -1,3 +1,6 @@
+# Nilai asli (SITE_URL/PORT produksi) — hanya ada di server, ditulis workflow.
+# Jangan pernah commit file ini.
+.env
 # Generated oleh `node tools/build.mjs` — dibangun ulang saat docker build,
 # jadi tidak di-commit. Clone baru? Jalankan `node tools/build.mjs` sekali.
 rilis/
