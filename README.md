@@ -17,30 +17,38 @@ index.html            Beranda (hero + download + fitur + FAQ).
                       Bagian download dinamis via version.json (badge versi,
                       tombol per-OS), konten lainnya statis.
 
-rilis/
-  index.html          Arsip rilis (generated) — kartu versi terbaru + tabel arsip.
-  v1.0.0/index.html   Halaman per versi (generated) — download, changelog,
+rilis/                GENERATED, tidak di-commit. Arsip + halaman per versi.
+  index.html          Arsip rilis — kartu versi terbaru + tabel arsip.
+  v1.0.0/index.html   Halaman per versi — download, changelog,
   v1.1.0/index.html   catatan install, checksum. Satu versi = satu URL.
 
-releases.json         SUMBER KEBENARAN. Daftar semua rilis: versi, tanggal,
-                      notes, changes, dan URL files. Edit file ini tiap rilis.
+releases.json         SUMBER KEBENARAN (di-push). Daftar semua rilis: versi,
+                      tanggal, notes, changes, dan URL files. Edit tiap rilis.
 
-version.json          GENERATED dari releases.json (rilis terbaru saja).
+version.json          GENERATED, tidak di-commit. Dibangun dari releases.json
+                      (rilis terbaru) saat `node tools/build.mjs` / docker build.
                       Dibaca landing (app.js) SEKALIGUS aplikasi
                       (Settings → General → Update) untuk cek pembaruan.
-                      Jangan edit manual — selalu hasil `node tools/build.mjs`.
 
-sitemap.xml           GENERATED (/, /rilis/, /rilis/vX.Y.Z/ per versi).
+sitemap.xml           GENERATED, tidak di-commit (/, /rilis/, /rilis/vX/ per versi).
 
 release.html          Redirect legacy (canonical + meta refresh) ke rilis/.
                       Jangan dihapus — menjaga backlink lama tetap hidup.
 
 downloads/
-  v1.0.0/             Taruh file installer HASIL BUILD di sini per versi.
+  v1.0.0/             Taruh installer HASIL BUILD di sini per versi.
   v1.1.0/             Nama file bebas, nanti terdeteksi otomatis (lihat tabel).
   .gitkeep            (placeholder agar folder ikut ke-commit)
 
-tools/build.mjs       Generator (Node >= 18, tanpa dependensi).
+tools/build.mjs       Generator (Node >= 18, tanpa dependensi). Dijalankan
+                      manual (`node tools/build.mjs`) atau otomatis di docker build.
+
+Dockerfile            Multi-stage: node:20-alpine (build) → nginx:alpine (serve).
+nginx.conf            Config nginx: try_files, 301 /release.html, cache /downloads/.
+docker-compose.yml    Jalankan lokal: `docker compose up --build` (+ SITE_URL/PORT).
+.dockerignore         Batasi konteks build (tanpa .git).
+.gitignore            generated (rilis/, version.json, sitemap.xml) + downloads/v*/
+                      tidak di-commit — dibangun ulang saat deploy.
 
 app.js, styles.css, assets/, robots.txt, site.webmanifest
 ```
@@ -150,21 +158,62 @@ alur — cukup ganti value `files` jadi URL.
 - `release.html` lama dipertahankan sebagai redirect + `noindex`
   supaya URL lama tidak 404 dan tidak jadi konten duplikat.
 
-## Jalankan lokal & deploy
+## Jalankan lokal (tanpa Docker)
 
 ```bash
 cd musa-landing
+node tools/build.mjs          # wajib sekali setelah clone (file generated tidak di-commit)
 python3 -m http.server 8080
 # buka http://localhost:8080/ dan http://localhost:8080/rilis/
 ```
 
-Deploy: folder ini adalah web root apa adanya (tanpa build command).
+## Deploy (Docker — cara utama)
+
+Yang di-push hanya sumber: `index.html`, `releases.json`, `downloads/`,
+aset, dan config. File hasil generate (`rilis/`, `version.json`,
+`sitemap.xml`) **tidak di-commit** (lihat `.gitignore`) — dibangun ulang
+di dalam image saat `docker build` (tahap `builder` menjalankan
+`node tools/build.mjs`).
+
+```bash
+# Build + jalan lokal
+docker compose up --build
+# buka http://localhost:8080/ dan http://localhost:8080/rilis/
+
+# Domain lain (canonical/OG/sitemap + page di version.json ikut ganti):
+SITE_URL=https://musa.kacangan.net docker compose up --build
+
+# Port lain:
+PORT=9000 docker compose up --build
+```
+
+Isi compose (`docker-compose.yml`): build dari `Dockerfile`
+multi-stage (`node:20-alpine` build → `nginx:alpine` serve),
+`restart: unless-stopped`. File internal (`tools/`, `releases.json`,
+`Dockerfile`, dll) tidak ikut di-serve — cek: `/releases.json` → 404.
+
+Catatan:
+
+- Kalau pakai file lokal di `downloads/vX.Y.Z/`, file itu harus ada
+  saat `docker build` (ikut konteks build, lalu ikut ke image).
+  Kalau pakai URL eksternal di `releases.json`, tidak ada yang perlu
+  disiapkan — paling ringan untuk image.
+- `nginx.conf`: `try_files` untuk URL bersih (`/rilis/v1.0.0/`),
+  redirect permanen 301 `/release.html` → `/rilis/`,
+  cache lama khusus `/downloads/` (nama file berversi, aman),
+  gzip untuk css/js/json/svg.
+- Masih mau GitHub Pages (tanpa Docker)? Bisa: jalankan
+  `node tools/build.mjs` dulu lalu `git add -f rilis version.json sitemap.xml`
+  sebelum push. Tapi jangan campur dua alur tanpa sadar.
+
+## Deploy (alternatif: GitHub/Cloudflare Pages)
+
+Folder ini tetap bisa jadi web root apa adanya (tanpa build command),
+asal file generated ikut ter-commit (lihat catatan `-f` di atas).
 
 - **GitHub Pages**: Settings → Pages → Deploy from branch → `main` / root.
 - **Cloudflare Pages**: New Project → Upload assets / connect git →
   output = folder ini.
-- File generated (`rilis/`, `version.json`, `sitemap.xml`) **ikut di-commit**
-  supaya Pages bisa serve langsung tanpa CI.
 
 ## Cek pembaruan dari aplikasi
 

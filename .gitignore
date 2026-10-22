@@ -1,0 +1,8 @@
+# Generated oleh `node tools/build.mjs` — dibangun ulang saat docker build,
+# jadi tidak di-commit. Clone baru? Jalankan `node tools/build.mjs` sekali.
+rilis/
+version.json
+sitemap.xml
+# File installer per versi (besar). Ikut ke image HANYA kalau ada di folder
+# saat docker build; kalau pakai URL eksternal di releases.json, abaikan saja.
+downloads/v*/

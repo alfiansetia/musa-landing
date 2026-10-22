@@ -1,0 +1,10 @@
+services:
+  musa-landing:
+    build:
+      context: .
+      args:
+        SITE_URL: ${SITE_URL:-https://alfiansetia.github.io/musa-landing}
+    image: musa-landing:latest
+    ports:
+      - "${PORT:-8080}:80"
+    restart: unless-stopped
