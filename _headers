@@ -1,4 +1,0 @@
-# version.json is read cross-origin by the app (Settings → Update check)
-# and any browser preview, so it must allow CORS. Tight scope: JSON only.
-/version.json
-  Access-Control-Allow-Origin: *
