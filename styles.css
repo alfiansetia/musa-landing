@@ -18,6 +18,7 @@ a { color: var(--acc2); }
 .nav { position: sticky; top: 0; background: rgba(10,10,12,.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); z-index: 10; }
 .nav-inner { display: flex; align-items: center; gap: 20px; height: 60px; }
 .brand { color: var(--text); text-decoration: none; font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 10px; margin-right: auto; }
+.brand img { border-radius: 8px; display: block; }
 .pill-dot { width: 34px; height: 14px; border-radius: 999px; background: linear-gradient(90deg, var(--acc), var(--acc2)); display: inline-block; }
 .nav-links { display: flex; gap: 16px; }
 .nav-links a { color: var(--muted); text-decoration: none; }

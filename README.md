@@ -6,6 +6,13 @@ Landing page statis untuk Musa (pure HTML/CSS/JS, tanpa build step).
 - `release.html` — ringkasan rilis terbaru + arsip versi lama + checksum
 - `app.js` — **config manual** `MUSA_RELEASE` (versi, tanggal, notes, URL file). Tidak fetch GitHub API karena repo kode private.
 - `styles.css` — tema gelap responsif
+- `assets/` — `logo.svg`, `favicon.svg`, `apple-touch-icon.svg`, `og-image.svg`
+- `sitemap.xml`, `robots.txt`, `site.webmanifest` — SEO dasar
+
+> Domain default di canonical/OG/sitemap adalah
+> `https://alfiansetia.github.io/musa-landing/`. Kalau deploy ke domain lain
+> (misal Cloudflare Pages + domain sendiri), find-replace domain itu di
+> `index.html`, `release.html`, `robots.txt`, `sitemap.xml`.
 
 ## Jalankan lokal
 
