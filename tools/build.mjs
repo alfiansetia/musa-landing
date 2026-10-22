@@ -229,7 +229,7 @@ function foot(pre) {
   return `  <footer>
     <div class="wrap foot">
       <span>Musa · proprietary — all rights reserved</span>
-      <span><a href="${pre}index.html">Beranda</a> · <a href="${pre}rilis/">Rilis</a></span>
+      <span><a href="${pre}index.html">Beranda</a> · <a href="${pre}rilis/">Rilis</a> · <a href="${pre}privasi/">Privasi</a></span>
     </div>
   </footer>`;
 }
@@ -423,6 +423,7 @@ writeFileSync(join(ROOT, "version.json"), JSON.stringify({
 const urls = [
   { loc: `${site}/`, freq: "weekly", pri: "1.0" },
   { loc: `${site}/rilis/`, freq: "weekly", pri: "0.8" },
+  { loc: `${site}/privasi/`, freq: "yearly", pri: "0.3" },
   ...items.map(({ release }) => ({ loc: `${site}/rilis/v${release.version}/`, freq: "monthly", pri: "0.6" })),
 ];
 writeFileSync(join(ROOT, "sitemap.xml"),
