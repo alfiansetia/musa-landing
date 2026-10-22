@@ -25,8 +25,12 @@ var FALLBACK_RELEASE = {
 
     document.querySelectorAll("[data-asset]").forEach(function (el) {
       var url = rel.files[el.getAttribute("data-asset")];
+      // No per-file URL yet → fall back to the release page, never a dead "#".
       if (url && url !== "#") el.href = url;
-      else el.classList.add("is-pending");
+      else {
+        el.href = "release.html";
+        el.classList.add("is-pending");
+      }
     });
 
     var badge = document.getElementById("ver-badge");
