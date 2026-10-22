@@ -6,6 +6,7 @@
       "date": "22 Oktober 2026",
       "notes": "Rilis pertama: pill + stats + Now Playing + timer + keep awake + quick actions + tray/hotkey + Settings.",
       "unsigned": true,
+      "support": "alfian@kacangan.net",
       "changes": [
         "Overlay pill ala Dynamic Island: hover mengembang, klik di luar pill tembus",
         "Statistik CPU / RAM / baterai live tiap 2 detik",

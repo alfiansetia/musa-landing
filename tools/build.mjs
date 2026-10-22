@@ -240,9 +240,13 @@ function versionPage(site, release, local, prev, next) {
   const changes = release.changes.map((c) => `        <li>${esc(c)}</li>`).join("\n");
   const pager = [prev ? `<a href="../v${prev}/">← v${prev}</a>` : "", next ? `<a href="../v${next}/">v${next} →</a>` : ""]
     .filter(Boolean).join(" · ");
-  const supportLine = release.support
-    ? `<br />Lapor bug ke: <a href="${esc(release.support)}">${esc(release.support)}</a>.`
-    : "";
+  const supportLine = (() => {
+    const s = release.support || "";
+    if (!s) return "";
+    const href = s.includes("://") || s.startsWith("mailto:") ? s : (s.includes("@") ? "mailto:" + s : s);
+    const text = s.startsWith("mailto:") ? s.slice(7) : s;
+    return `<br />Lapor bug / butuh bantuan: <a href="${esc(href)}">${esc(text)}</a>.`;
+  })();
   const unsignedBox = release.unsigned
     ? `    <p class="warn"><strong>Beta test build (unsigned).</strong> Build ini belum ditandatangani dan belum dinotarisasi — peringatan Windows SmartScreen / macOS Gatekeeper itu normal. File aman selama diunduh dari halaman resmi ini. Cocokkan SHA-256 file dengan tabel checksum di bawah.<br />Windows (.exe NSIS): layar biru “Windows protected your PC” → <em>More info</em> → <em>Run anyway</em>.<br />macOS (.dmg/.app): klik kanan app → <em>Open</em> → <em>Open</em>; atau System Settings → Privacy &amp; Security → <em>Open Anyway</em>; alternatif Terminal: <code>xattr -cr /Applications/Musa.app</code>.${supportLine}</p>\n`
     : "";
