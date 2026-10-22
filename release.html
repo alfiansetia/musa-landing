@@ -2,105 +2,12 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rilis — Musa (Download Windows, macOS, Linux)</title>
-  <meta name="description" content="Riwayat rilis Musa: versi terbaru, catatan install, checksum SHA-256, dan arsip versi lama untuk Windows, macOS ARM, dan Linux." />
-  <link rel="canonical" href="https://alfiansetia.github.io/musa-landing/release.html" />
-  <meta name="theme-color" content="#0a0a0c" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Musa" />
-  <meta property="og:title" content="Rilis — Musa" />
-  <meta property="og:description" content="Versi terbaru Musa + arsip versi lama, checksum, dan catatan install per-OS." />
-  <meta property="og:url" content="https://alfiansetia.github.io/musa-landing/release.html" />
-  <meta property="og:image" content="https://alfiansetia.github.io/musa-landing/assets/og-image.svg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Rilis — Musa" />
-  <meta name="twitter:description" content="Download Musa terbaru untuk Windows, macOS ARM, dan Linux." />
-  <meta name="twitter:image" content="https://alfiansetia.github.io/musa-landing/assets/og-image.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.svg" />
-  <link rel="manifest" href="site.webmanifest" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta http-equiv="refresh" content="0; url=./rilis/" />
+  <link rel="canonical" href="https://alfiansetia.github.io/musa-landing/rilis/" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Rilis — Musa (pindah)</title>
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Logo Musa" width="30" height="30" />Musa</a>
-      <nav class="nav-links">
-        <a href="index.html#fitur">Fitur</a>
-        <a href="index.html#download">Download</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="release.html">Rilis</a>
-      </nav>
-      <a class="btn btn-small" href="index.html#download">Download</a>
-    </div>
-  </header>
-
-  <main class="wrap section">
-    <h1>Rilis</h1>
-    <p class="section-sub">
-      Repo kode private, jadi halaman ini adalah arsip resminya.
-      Link file di bawah aktif setelah kamu upload ke hosting publik (lihat README).
-    </p>
-
-    <h2>Terbaru</h2>
-    <article class="card" id="latest-card">
-      <h3 id="latest-ver">v1.0.0</h3>
-      <p class="os" id="latest-date">Memuat tanggal rilis…</p>
-      <div class="cta-row" id="latest-assets">
-        <a class="btn btn-small" data-asset="x64-setup" href="#">Windows x64</a>
-        <a class="btn btn-small btn-ghost" data-asset="x86-setup" href="#">Windows x86</a>
-        <a class="btn btn-small btn-ghost" data-asset="dmg" href="#">macOS DMG</a>
-        <a class="btn btn-small btn-ghost" data-asset="deb" href="#">Linux .deb</a>
-        <a class="btn btn-small btn-ghost" data-asset="appimage" href="#">AppImage</a>
-      </div>
-      <div id="latest-notes" class="notes"></div>
-    </article>
-
-    <h2>Catatan install</h2>
-    <ul class="notes-list">
-      <li>Windows: NSIS per-user, tanpa admin. WebView2 sudah bawaan Windows 11; mesin lama mengunduh runtime saat install.</li>
-      <li>macOS: seret ke Applications. Build unsigned → klik kanan → Open pada buka pertama.</li>
-      <li>Linux: Now Playing / Mixer / quick actions / keep-awake adalah stub (UI hide/disable). Tray icon tergantung desktop (GNOME butuh ekstensi AppIndicator).</li>
-      <li>Update selalu manual: install versi baru di atas versi lama, setting JSON terbawa.</li>
-    </ul>
-
-    <h2>Checksum (SHA-256)</h2>
-    <p class="section-sub">Isi setelah artifacts final dari CI. Contoh format:</p>
-    <pre class="code" id="checksums">&lt;sha256&gt;  Musa_1.0.0_x64-setup.exe
-&lt;sha256&gt;  Musa_1.0.0_x86-setup.exe
-&lt;sha256&gt;  Musa_1.0.0_aarch64.dmg
-&lt;sha256&gt;  musa_1.0.0_amd64.deb
-&lt;sha256&gt;  Musa_1.0.0_amd64.AppImage</pre>
-
-    <h2>Arsip</h2>
-    <table class="table">
-      <thead>
-        <tr><th>Versi</th><th>Tanggal</th><th>Catatan</th><th>File</th></tr>
-      </thead>
-      <tbody id="archive-body">
-        <tr>
-          <td>v1.0.0</td>
-          <td data-archive-date="v1.0.0">—</td>
-          <td>Rilis pertama: pill + stats + Now Playing + timer + keep awake + quick actions + tray/hotkey + Settings.</td>
-          <td>—</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="meta">Arsip versi lama tidak pernah dihapus dari halaman ini — hanya tambah baris baru per rilis.</p>
-  </main>
-
-  <footer>
-    <div class="wrap foot">
-      <span>Musa · proprietary — all rights reserved</span>
-      <span><a href="index.html">Beranda</a></span>
-    </div>
-  </footer>
-
-  <script src="app.js"></script>
+  <p>Halaman rilis pindah ke <a href="./rilis/">rilis/</a>.</p>
 </body>
 </html>

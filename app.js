@@ -1,6 +1,7 @@
-// Single source of truth: ./version.json (same-origin, no CORS issue).
-// EDIT SAAT RILIS BARU cukup di version.json — app.js + release.html
-// membaca dari sana. Repo kode private, jadi TIDAK fetch GitHub API.
+// Sumber kebenaran: ./releases.json -> generate via `node tools/build.mjs`
+// (yang menulis ulang version.json + rilis/* + sitemap.xml).
+// File ini hanya MEMBACA ./version.json (same-origin, tanpa GitHub API
+// karena repo kode private).
 // FALLBACK di bawah hanya untuk preview file:// (fetch gagal) —
 // sinkronkan manual dengan version.json saat rilis.
 var FALLBACK_RELEASE = {
