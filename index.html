@@ -63,6 +63,7 @@
         <a class="btn" id="cta-primary" href="#download">Download untuk Windows</a>
         <a class="btn btn-ghost" href="release.html">Lihat halaman rilis</a>
       </div>
+      <p class="meta" id="os-hint"></p>
       <p class="meta">Windows 11 · macOS ARM · Ubuntu x64 · ±3,7 MB · idle ±26 MB RAM</p>
       <div class="pill-demo" aria-hidden="true">
         <div class="pill-demo-bar">
@@ -86,19 +87,19 @@
         Jangan jadikan file ini rilis resmi sebelum signing beres.
       </p>
       <div class="cards" id="dl-cards">
-        <article class="card">
+        <article class="card" data-os-card="windows">
           <h3>Windows</h3>
           <p class="os">Windows 11 · x64 / x86 · NSIS per-user, tanpa admin</p>
           <a class="btn btn-small" data-asset="x64-setup" href="#">Musa x64-setup.exe</a>
           <a class="link" data-asset="x86-setup" href="#">versi x86</a>
         </article>
-        <article class="card">
+        <article class="card" data-os-card="macos">
           <h3>macOS</h3>
           <p class="os">Apple Silicon (ARM64) · .app + DMG · aksesori menu-bar, tanpa Dock icon</p>
           <a class="btn btn-small" data-asset="dmg" href="#">Musa .dmg</a>
           <a class="link" data-asset="app-targz" href="#">.app.tar.gz</a>
         </article>
-        <article class="card">
+        <article class="card" data-os-card="linux">
           <h3>Linux</h3>
           <p class="os">Ubuntu x64 · .deb / AppImage · X11 disarankan, Wayland terbatas</p>
           <a class="btn btn-small" data-asset="deb" href="#">Musa .deb</a>
