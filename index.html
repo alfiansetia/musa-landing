@@ -18,6 +18,9 @@
   <meta name="twitter:title" content="Musa — Dynamic Island untuk Desktop" />
   <meta name="twitter:description" content="Overlay pill: kecil, mengembang saat hover, click-through. Download Windows, macOS ARM, Linux." />
   <meta name="twitter:image" content="https://alfiansetia.github.io/musa-landing/assets/og-image.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.svg" />
   <link rel="manifest" href="site.webmanifest" />
@@ -36,6 +39,7 @@
   </script>
 </head>
 <body>
+  <div class="mascot" aria-hidden="true"><div class="eyes"><i class="eye"></i><i class="eye"></i></div></div>
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Logo Musa" width="30" height="30" />Musa</a>
@@ -115,36 +119,44 @@
       <p class="section-sub">Semua berjalan lokal di mesinmu. Tidak ada akun, tidak ada analytic, tidak ada server.</p>
       <div class="grid">
         <article class="card">
-          <h3>Pill yang tahu diri</h3>
-          <p>Collapsed mungil (compact / regular / large), mengembang saat hover, menciut saat kursor pergi. Easing spring, bisa reduce-motion.</p>
+          <span class="app" style="--c1:#7c6cff;--c2:#4de3c2"><svg viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="7" rx="3.5"/></svg></span>
+          <div><h3>Pill yang tahu diri</h3>
+          <p>Collapsed mungil (compact / regular / large), mengembang saat hover, menciut saat kursor pergi. Easing spring, bisa reduce-motion.</p></div>
         </article>
         <article class="card">
-          <h3>Click-through</h3>
-          <p>Hanya pill yang menerima klik. Area transparan di sekitarnya tembus ke desktop — overlay tidak pernah menghalangi kerja.</p>
+          <span class="app" style="--c1:#5fb2ff;--c2:#1f55d6"><svg viewBox="0 0 24 24"><path d="M7 3l13 9-8 1.5L9 21z"/></svg></span>
+          <div><h3>Click-through</h3>
+          <p>Hanya pill yang menerima klik. Area transparan di sekitarnya tembus ke desktop — overlay tidak pernah menghalangi kerja.</p></div>
         </article>
         <article class="card">
-          <h3>Statistik 2 detik</h3>
-          <p>Satu metrik di pill ciut: CPU / RAM / baterai (default CPU). Sampling native tiap 2 detik, slot baterai kosong otomatis di PC tanpa baterai.</p>
+          <span class="app" style="--c1:#7fe0ff;--c2:#2d6bff"><svg viewBox="0 0 24 24"><path d="M5 20v-8M11 20V6M17 20v-5M3 20h18"/></svg></span>
+          <div><h3>Statistik 2 detik</h3>
+          <p>Satu metrik di pill ciut: CPU / RAM / baterai (default CPU). Sampling native tiap 2 detik, slot baterai kosong otomatis di PC tanpa baterai.</p></div>
         </article>
         <article class="card">
-          <h3>Now Playing</h3>
-          <p>Windows via SMTC: judul, artis, artwork, play/pause/skip, seek bar, shuffle, repeat, rate. Kontrol yang tidak didukung player tampil disabled.</p>
+          <span class="app" style="--c1:#ff6aa2;--c2:#8b3dff"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="17" r="2.6"/><circle cx="17" cy="15" r="2.6"/><path d="M10.1 17V6l9.5-2v11"/></svg></span>
+          <div><h3>Now Playing</h3>
+          <p>Windows via SMTC: judul, artis, artwork, play/pause/skip, seek bar, shuffle, repeat, rate. Kontrol yang tidak didukung player tampil disabled.</p></div>
         </article>
         <article class="card">
-          <h3>Timer &amp; stopwatch</h3>
-          <p>Preset 5 / 10 / 25 menit plus stopwatch. Deadline hidup di Rust — collapse atau reload webview tidak me-reset. Pill berdenyut sekali saat selesai.</p>
+          <span class="app" style="--c1:#ff8a7a;--c2:#e8243a"><svg viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.5M10 3h4M12 3v3"/></svg></span>
+          <div><h3>Timer &amp; stopwatch</h3>
+          <p>Preset 5 / 10 / 25 menit plus stopwatch. Deadline hidup di Rust — collapse atau reload webview tidak me-reset. Pill berdenyut sekali saat selesai.</p></div>
         </article>
         <article class="card">
-          <h3>Keep awake sesi</h3>
-          <p>Ikon matahari menahan system sleep selagi aktif (display sleep tetap boleh). Selalu mati tiap launch — bukan setting permanen.</p>
+          <span class="app" style="--c1:#ffd76a;--c2:#f08a1d"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.5 17.5l-2 2"/></svg></span>
+          <div><h3>Keep awake sesi</h3>
+          <p>Ikon matahari menahan system sleep selagi aktif (display sleep tetap boleh). Selalu mati tiap launch — bukan setting permanen.</p></div>
         </article>
         <article class="card">
-          <h3>Quick actions</h3>
-          <p>Task Manager, kunci layar, dan shortcut ke pengaturan Do Not Disturb — sekali klik dari header expanded.</p>
+          <span class="app" style="--c1:#6ee79a;--c2:#159a45"><svg viewBox="0 0 24 24"><path d="M13 2.5 5.5 13.2h5.3l-1.3 8.3 7.5-10.7h-5.3z"/></svg></span>
+          <div><h3>Quick actions</h3>
+          <p>Task Manager, kunci layar, dan shortcut ke pengaturan Do Not Disturb — sekali klik dari header expanded.</p></div>
         </article>
         <article class="card">
-          <h3>Tray + hotkey + autostart</h3>
-          <p>Tray: Autohide / Force hide / Force show / Settings / Start at login / Quit. Hotkey global <kbd>Ctrl+Shift+N</kbd> sebagai jalur darurat. Autostart per-user, nonaktif di portable mode.</p>
+          <span class="app" style="--c1:#b6bfd0;--c2:#5a6378"><svg viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 14 6 10z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span>
+          <div><h3>Tray + hotkey + autostart</h3>
+          <p>Tray: Autohide / Force hide / Force show / Settings / Start at login / Quit. Hotkey global <kbd>Ctrl+Shift+N</kbd> sebagai jalur darurat. Autostart per-user, nonaktif di portable mode.</p></div>
         </article>
       </div>
     </section>
