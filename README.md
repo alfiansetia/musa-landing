@@ -4,7 +4,11 @@ Landing page statis untuk Musa (pure HTML/CSS/JS, tanpa build step).
 
 - `index.html` — perkenalan + download + fitur + FAQ
 - `release.html` — ringkasan rilis terbaru + arsip versi lama + checksum
-- `app.js` — **config manual** `MUSA_RELEASE` (versi, tanggal, notes, URL file). Tidak fetch GitHub API karena repo kode private.
+- `app.js` — baca `./version.json` (same-origin, tanpa GitHub API karena repo
+  kode private). Fallback baked-in hanya untuk preview `file://`.
+- `version.json` — **sumber kebenaran rilis**: `version`, `date`, `notes`,
+  `changes`, dan URL `files` per-OS. Dibaca landing SEKALIGUS aplikasi
+  (Settings → General → Update) — jadi satu file untuk dua konsumen.
 - `styles.css` — tema gelap responsif
 - `assets/` — `logo.svg`, `favicon.svg`, `apple-touch-icon.svg`, `og-image.svg`
 - `sitemap.xml`, `robots.txt`, `site.webmanifest` — SEO dasar
@@ -35,6 +39,10 @@ Folder ini repo terpisah. Opsi:
 Repo kode private → tidak ada fetch otomatis. Tiap rilis:
 
 1. Upload installer ke hosting publik (R2 / file host pilihanmu).
-2. Edit `MUSA_RELEASE` di `app.js`: `version`, `date`, `notes`, dan 6 URL file (`#` = belum ada, tombol otomatis redup via `.is-pending`).
+2. Edit **satu file**: `version.json` — `version`, `date`, `notes`, `changes`,
+   dan 6 URL `files` (`"#"` = belum ada, tombol otomatis redup via `.is-pending`).
+   Sinkronkan juga `FALLBACK_RELEASE` di `app.js` (untuk preview offline).
 3. Tambah satu baris ke tabel Arsip di `release.html`.
 4. Isi blok checksum SHA-256 dari artifacts CI.
+5. Domain `musa.kacangan.net` harus mengarah ke hosting ini — aplikasi
+   mengambil `https://musa.kacangan.net/version.json` untuk cek pembaruan.

@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "date": "22 Oktober 2026",
+  "notes": "Rilis pertama: pill + stats + Now Playing + timer + keep awake + quick actions + tray/hotkey + Settings.",
+  "changes": [
+    "Overlay pill ala Dynamic Island: hover mengembang, klik di luar pill tembus",
+    "Statistik CPU / RAM / baterai live tiap 2 detik",
+    "Now Playing via SMTC (Windows): artwork, transport, seek, shuffle, repeat",
+    "Countdown timer + stopwatch, deadline aman dari collapse",
+    "Keep-awake sesi, quick actions, tray + hotkey Ctrl+Shift+N",
+    "Jendela Settings + cek pembaruan manual"
+  ],
+  "files": {
+    "x64-setup": "#",
+    "x86-setup": "#",
+    "dmg": "#",
+    "app-targz": "#",
+    "deb": "#",
+    "appimage": "#"
+  }
+}
