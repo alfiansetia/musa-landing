@@ -49,6 +49,8 @@ function loadReleases() {
     version: String(r.version).replace(/^v/i, ""),
     date: r.date || "",
     notes: r.notes || "",
+    unsigned: Boolean(r.unsigned),
+    support: r.support || "",
     changes: Array.isArray(r.changes) ? r.changes : [],
     files: { ...(r.files || {}) },
     checksums: { ...(r.checksums || {}) },
@@ -238,12 +240,18 @@ function versionPage(site, release, local, prev, next) {
   const changes = release.changes.map((c) => `        <li>${esc(c)}</li>`).join("\n");
   const pager = [prev ? `<a href="../v${prev}/">← v${prev}</a>` : "", next ? `<a href="../v${next}/">v${next} →</a>` : ""]
     .filter(Boolean).join(" · ");
+  const supportLine = release.support
+    ? `<br />Lapor bug ke: <a href="${esc(release.support)}">${esc(release.support)}</a>.`
+    : "";
+  const unsignedBox = release.unsigned
+    ? `    <p class="warn"><strong>Beta test build (unsigned).</strong> Build ini belum ditandatangani dan belum dinotarisasi — peringatan Windows SmartScreen / macOS Gatekeeper itu normal. File aman selama diunduh dari halaman resmi ini. Cocokkan SHA-256 file dengan tabel checksum di bawah.<br />Windows (.exe NSIS): layar biru “Windows protected your PC” → <em>More info</em> → <em>Run anyway</em>.<br />macOS (.dmg/.app): klik kanan app → <em>Open</em> → <em>Open</em>; atau System Settings → Privacy &amp; Security → <em>Open Anyway</em>; alternatif Terminal: <code>xattr -cr /Applications/Musa.app</code>.${supportLine}</p>\n`
+    : "";
   const body = `${nav("../../")}
   <main class="wrap section">
     <p class="meta"><a href="../../index.html">Beranda</a> › <a href="../">Rilis</a> › v${esc(v)}</p>
     <h1>Musa v${esc(v)}</h1>
     <p class="section-sub">Dipublish ${esc(release.date)} · ${esc(release.notes)}</p>
-    <div class="cards" id="dl-cards">
+${unsignedBox}    <div class="cards" id="dl-cards">
 ${downloadCards(release, site, local)}
     </div>
 
@@ -347,6 +355,7 @@ if (newVer) {
     version: v,
     date: prev.date,
     notes: `Ringkasan perubahan v${v} (isi manual).`,
+    unsigned: true,
     changes: [...(prev.changes || [])],
     files: Object.fromEntries(ASSETS.map((a) => [a.key, "#"])),
     checksums: {},

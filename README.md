@@ -99,6 +99,12 @@ luar, jadi tempel manual dari output CI (`SHA256SUMS-*.txt`), kunci-nya
 Tanpa entri ini, baris checksum tampil sebagai placeholder. Untuk file
 lokal di `downloads/` tidak perlu — SHA dihitung otomatis.
 
+**Build unsigned (beta)** — tambah `"unsigned": true` di entri rilis untuk
+menampilkan kotak peringatan + cara bypass SmartScreen/Gatekeeper di
+halaman versi. Opsional `"support": "https://..."` untuk link lapor bug.
+Kalau nanti build sudah signed/notarized, hapus/tukar jadi `false` dan
+kotaknya hilang sendiri.
+
 **3. Taruh file build + generate:**
 
 ```bash
