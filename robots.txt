@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alfiansetia.github.io/musa-landing/sitemap.xml
+Sitemap: https://musa.kacangan.net/sitemap.xml

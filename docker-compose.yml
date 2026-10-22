@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        SITE_URL: ${SITE_URL:-https://alfiansetia.github.io/musa-landing}
+        SITE_URL: ${SITE_URL:-https://musa.kacangan.net}
     image: musa-landing:latest
     # Akses utama lewat tunnel (app-network) sebagai http://musa-landing:80.
     # Mapping ports di bawah opsional — hapus kalau mau tunnel-only.

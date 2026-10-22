@@ -5,7 +5,7 @@ Halaman rilis dibuat **statis per versi** (SEO-friendly) dan digenerate
 dari satu sumber kebenaran: `releases.json`.
 
 > Domain default di canonical/OG/sitemap adalah
-> `https://alfiansetia.github.io/musa-landing/`. Kalau deploy ke domain lain
+> `https://musa.kacangan.net/`. Kalau deploy ke domain lain
 > (misal `https://musa.kacangan.net`), ganti **satu tempat**: field `site`
 > di `releases.json`, lalu jalankan `node tools/build.mjs`.
 > Jangan find-replace manual per file — file di `rilis/` itu hasil generate.
@@ -286,7 +286,7 @@ mengarah ke hosting folder ini. Format `version.json` dijaga kompatibel:
 
 ```json
 { "version": "1.1.0", "date": "...",
-  "page": "https://alfiansetia.github.io/musa-landing/rilis/v1.1.0/",
+  "page": "https://musa.kacangan.net/rilis/v1.1.0/",
   "notes": "...", "changes": ["..."], "files": { "x64-setup": "https://..." } }
 ```
 
