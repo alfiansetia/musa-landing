@@ -228,7 +228,7 @@ function nav(pre) {
 function foot(pre) {
   return `  <footer>
     <div class="wrap foot">
-      <span>Musa · proprietary — all rights reserved</span>
+      <span>Musa · proprietary — all rights reserved · terinspirasi dari <a href="https://rama2555.github.io/nusa/" rel="noopener">Nusa</a></span>
       <span><a href="${pre}index.html">Beranda</a> · <a href="${pre}rilis/">Rilis</a> · <a href="${pre}privasi/">Privasi</a></span>
     </div>
   </footer>`;
