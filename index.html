@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Musa — Dynamic Island untuk Desktop</title>
+  <meta name="description" content="Musa adalah overlay pill ala Dynamic Island untuk desktop: kecil di atas tengah layar, mengembang saat hover, click-through di luar pill. Download untuk Windows, macOS ARM, dan Linux." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html"><span class="pill-dot"></span>Musa</a>
+      <nav class="nav-links">
+        <a href="#fitur">Fitur</a>
+        <a href="#download">Download</a>
+        <a href="#faq">FAQ</a>
+        <a href="release.html">Rilis</a>
+      </nav>
+      <a class="btn btn-small" href="#download">Download</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / perkenalan -->
+    <section class="hero wrap">
+      <p class="badge"><span id="ver-badge">v1.0.0</span> · sekarang tersedia</p>
+      <h1>Dynamic Island<br />untuk desktop.</h1>
+      <p class="lede">
+        Musa adalah pill kecil di tengah atas layar. Diam saat tidak dibutuhkan,
+        mengembang saat hover — dan klik di luar pill selalu tembus ke aplikasi
+        di bawahnya. Tanpa Dock icon, tanpa jendela yang mengganggu.
+      </p>
+      <div class="cta-row">
+        <a class="btn" id="cta-primary" href="#download">Download untuk Windows</a>
+        <a class="btn btn-ghost" href="release.html">Lihat halaman rilis</a>
+      </div>
+      <p class="meta">Windows 11 · macOS ARM · Ubuntu x64 · ±3,7 MB · idle ±26 MB RAM</p>
+      <div class="pill-demo" aria-hidden="true">
+        <div class="pill-demo-bar">
+          <span class="pill-demo-dot"></span>
+          <span class="pill-demo-clock">12:30</span>
+          <span class="pill-demo-stat">CPU 8%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section id="download" class="wrap section">
+      <h2>Download</h2>
+      <p class="section-sub">
+        Unduh installer di bawah. Link aktif setelah file diupload ke hosting publik.
+        Cek update dari aplikasi via Settings → General → Update (cek manual, tanpa auto-download).
+      </p>
+      <p class="warn">
+        Build v1 belum ditandatangani (unsigned) dan belum dinotarisasi di macOS.
+        Windows SmartScreen / macOS Gatekeeper akan menampilkan peringatan — itu normal untuk build unsigned.
+        Jangan jadikan file ini rilis resmi sebelum signing beres.
+      </p>
+      <div class="cards" id="dl-cards">
+        <article class="card">
+          <h3>Windows</h3>
+          <p class="os">Windows 11 · x64 / x86 · NSIS per-user, tanpa admin</p>
+          <a class="btn btn-small" data-asset="x64-setup" href="#">Musa x64-setup.exe</a>
+          <a class="link" data-asset="x86-setup" href="#">versi x86</a>
+        </article>
+        <article class="card">
+          <h3>macOS</h3>
+          <p class="os">Apple Silicon (ARM64) · .app + DMG · aksesori menu-bar, tanpa Dock icon</p>
+          <a class="btn btn-small" data-asset="dmg" href="#">Musa .dmg</a>
+          <a class="link" data-asset="app-targz" href="#">.app.tar.gz</a>
+        </article>
+        <article class="card">
+          <h3>Linux</h3>
+          <p class="os">Ubuntu x64 · .deb / AppImage · X11 disarankan, Wayland terbatas</p>
+          <a class="btn btn-small" data-asset="deb" href="#">Musa .deb</a>
+          <a class="link" data-asset="appimage" href="#">AppImage</a>
+        </article>
+      </div>
+      <p class="meta" id="dl-meta">Terbaru: v1.0.0 · link aktif setelah file diupload ke hosting publik.</p>
+    </section>
+
+    <!-- Fitur -->
+    <section id="fitur" class="wrap section">
+      <h2>Fitur</h2>
+      <p class="section-sub">Semua berjalan lokal di mesinmu. Tidak ada akun, tidak ada analytic, tidak ada server.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Pill yang tahu diri</h3>
+          <p>Collapsed mungil (compact / regular / large), mengembang saat hover, menciut saat kursor pergi. Easing spring, bisa reduce-motion.</p>
+        </article>
+        <article class="card">
+          <h3>Click-through</h3>
+          <p>Hanya pill yang menerima klik. Area transparan di sekitarnya tembus ke desktop — overlay tidak pernah menghalangi kerja.</p>
+        </article>
+        <article class="card">
+          <h3>Statistik 2 detik</h3>
+          <p>Satu metrik di pill ciut: CPU / RAM / baterai (default CPU). Sampling native tiap 2 detik, slot baterai kosong otomatis di PC tanpa baterai.</p>
+        </article>
+        <article class="card">
+          <h3>Now Playing</h3>
+          <p>Windows via SMTC: judul, artis, artwork, play/pause/skip, seek bar, shuffle, repeat, rate. Kontrol yang tidak didukung player tampil disabled.</p>
+        </article>
+        <article class="card">
+          <h3>Timer &amp; stopwatch</h3>
+          <p>Preset 5 / 10 / 25 menit plus stopwatch. Deadline hidup di Rust — collapse atau reload webview tidak me-reset. Pill berdenyut sekali saat selesai.</p>
+        </article>
+        <article class="card">
+          <h3>Keep awake sesi</h3>
+          <p>Ikon matahari menahan system sleep selagi aktif (display sleep tetap boleh). Selalu mati tiap launch — bukan setting permanen.</p>
+        </article>
+        <article class="card">
+          <h3>Quick actions</h3>
+          <p>Task Manager, kunci layar, dan shortcut ke pengaturan Do Not Disturb — sekali klik dari header expanded.</p>
+        </article>
+        <article class="card">
+          <h3>Tray + hotkey + autostart</h3>
+          <p>Tray: Autohide / Force hide / Force show / Settings / Start at login / Quit. Hotkey global <kbd>Ctrl+Shift+N</kbd> sebagai jalur darurat. Autostart per-user, nonaktif di portable mode.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Cara kerja singkat -->
+    <section class="wrap section">
+      <h2>Cara pakai</h2>
+      <ol class="steps">
+        <li><strong>Install</strong> — Windows: jalankan NSIS per-user. macOS: seret .app ke Applications, klik kanan → Open sekali. Linux: install .deb atau chmod +x AppImage.</li>
+        <li><strong>Hover pill</strong> di tengah atas layar untuk membuka panel. Tinggalkan untuk menciutkan.</li>
+        <li><strong>Atur</strong> lewat ikon gear: layar follow-cursor, ukuran pill, offset, opasitas, autostart. Update dicek manual dari Settings.</li>
+      </ol>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="wrap section">
+      <h2>FAQ</h2>
+      <details open>
+        <summary>Kenapa klik di sekitar pill tembus ke bawah?</summary>
+        <p>Itu invarian inti Musa. Frontend melaporkan rect pill ke Rust tiap frame, lalu thread hit-test mengalihkan <code>ignoreCursorEvents</code> saat kursor di luar pill. Jadi overlay selebar 520px tapi hanya pill yang interaktif.</p>
+      </details>
+      <details>
+        <summary>Bedanya Autohide, Force hide, dan Force show?</summary>
+        <p><strong>Autohide</strong>: pill sembunyi saat kursor pergi, muncul lagi saat kursor menyentuh tepi atas. <strong>Force hide</strong>: sembunyi dan dikunci — zona reveal autohide ikut nonaktif sampai kamu show manual. <strong>Force show</strong> (juga via tray / <kbd>Ctrl+Shift+N</kbd> / Settings): membuka kunci dan menampilkan lagi. Status force hanya sesi ini; restart selalu mulai tampil.</p>
+      </details>
+      <details>
+        <summary>Fitur apa yang terbatas di Linux?</summary>
+        <p>Now Playing disembunyikan (tidak ada SMTC), Mixer “unavailable”, quick actions mengembalikan error, dan keep-awake disabled. UI-nya otomatis hide/disable — itu stub yang disengaja, bukan bug. Overlay transparan + click-through wajib dites di mesin asli (X11 vs Wayland, ikon tray tiap desktop).</p>
+      </details>
+      <details>
+        <summary>Kenapa Windows/macOS menampilkan peringatan saat install?</summary>
+        <p>Karena build v1 <strong>unsigned</strong>: belum ada Authenticode (Windows) dan belum notarization (macOS). Di macOS, klik kanan → Open, atau <code>xattr -dr com.apple.quarantine Musa.app</code> untuk build lokal. Jangan distribusikan sebagai rilis resmi sebelum signing.</p>
+      </details>
+      <details>
+        <summary>Apakah ada auto-update?</summary>
+        <p>Tidak di v1 — by design. Settings → General → Update hanya membandingkan <code>version.txt</code> di repo dengan versi berjalan, lalu mengarahkanmu download manual dari halaman rilis. Tidak ada yang diunduh/diinstall otomatis.</p>
+      </details>
+      <details>
+        <summary>Bagaimana autostart &amp; portable mode?</summary>
+        <p>Start at login tersedia di tray dan Settings, off by default, registrasi per-user (Windows: <code>HKCU…\Run</code>, macOS: LaunchAgent). Portable jika <code>NOTCH_PORTABLE=1</code> atau ada file <code>portable</code> di sebelah executable — menu autostart terkunci.</p>
+      </details>
+      <details>
+        <summary>Apakah dataku keluar dari mesin?</summary>
+        <p>Tidak. Stats, media (artwork 2 MB di-cache di memori saja), timer, dan settings JSON semuanya lokal. Satu-satunya network adalah cek versi manual ke <code>raw.githubusercontent.com</code> saat kamu menekan tombol update.</p>
+      </details>
+      <details>
+        <summary>Di mana log kalau ada masalah?</summary>
+        <p>Windows: <code>%LOCALAPPDATA%\com.musa.app\logs\musa.log</code>. macOS: <code>~/Library/Logs/com.musa.app/musa.log</code>. Frontend error ikut diteruskan ke file yang sama.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>Musa · proprietary — all rights reserved</span>
+      <span><a href="release.html">Rilis</a></span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
