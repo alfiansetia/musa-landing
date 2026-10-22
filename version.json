@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "date": "22 Oktober 2026",
+  "page": "https://musa.kacangan.net/rilis/v1.0.0/",
+  "notes": "Rilis pertama: pill + stats + Now Playing + timer + keep awake + quick actions + tray/hotkey + Settings.",
+  "changes": [
+    "Overlay pill ala Dynamic Island: hover mengembang, klik di luar pill tembus",
+    "Statistik CPU / RAM / baterai live tiap 2 detik",
+    "Now Playing via SMTC (Windows): artwork, transport, seek, shuffle, repeat",
+    "Countdown timer + stopwatch, deadline aman dari collapse",
+    "Keep-awake sesi, quick actions, tray + hotkey Ctrl+Shift+N",
+    "Jendela Settings + cek pembaruan manual"
+  ],
+  "files": {
+    "x64-setup": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_x64-setup.exe",
+    "x86-setup": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_x86-setup.exe",
+    "dmg": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_aarch64.dmg",
+    "app-targz": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_aarch64.app.tar.gz",
+    "deb": "https://files.musa.kacangan.net/v1.0.0/musa_1.0.0_amd64.deb",
+    "appimage": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_amd64.AppImage"
+  }
+}
