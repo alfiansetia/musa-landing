@@ -1,5 +1,5 @@
 {
-  "site": "https://alfiansetia.github.io/musa-landing",
+  "site": "https://musa.kacangan.net",
   "releases": [
     {
       "version": "1.0.0",
@@ -14,12 +14,20 @@
         "Jendela Settings + cek pembaruan manual"
       ],
       "files": {
-        "x64-setup": "#",
-        "x86-setup": "#",
+        "x64-setup": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_x64-setup.exe",
+        "x86-setup": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_x86-setup.exe",
         "dmg": "#",
         "app-targz": "#",
         "deb": "#",
         "appimage": "#"
+      },
+      "checksums": {
+        "Musa_1.0.0_x64-setup.exe": "a28c054e935f71dd26852f48f26b362166628939b91400f8f9be792e75e6e35d",
+        "Musa_1.0.0_x86-setup.exe": "2c8488ddf2922aec944862194c782ce3400cb993265e2aa4690cb3faa1822d3f",
+        "Musa_1.0.0_aarch64.dmg": "e05c0cf5b72187a18a225d0072eb96c8799353a2329a7968de3896d0dba0775d",
+        "Musa_1.0.0_aarch64.app.tar.gz": "c1f7938e3cd20c3c30434688eb836281129bb45ee45023d32834fb322baff7e8",
+        "musa_1.0.0_amd64.deb": "742a168ef38a1cbcdd2347225882015a57e6449676519ad4f98ddf97a9344514",
+        "Musa_1.0.0_amd64.AppImage": "32b43bb670fcc26d47f25b8796e67a985d556a526d2bdd5ed2a77ece46a71949"
       }
     }
   ]

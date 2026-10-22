@@ -85,6 +85,20 @@ Biarkan `"#"` untuk file yang belum ada — tombolnya otomatis redup
 "files": { "x64-setup": "https://files.contoh.net/musa/Musa_1.1.0_x64-setup.exe" }
 ```
 
+**Checksum file eksternal** — SHA tidak bisa dihitung otomatis untuk URL
+luar, jadi tempel manual dari output CI (`SHA256SUMS-*.txt`), kunci-nya
+**nama file persis** (termasuk besar-kecil huruf):
+
+```json
+"checksums": {
+  "Musa_1.1.0_x64-setup.exe": "a28c05...e35d",
+  "musa_1.1.0_amd64.deb": "742a16...4514"
+}
+```
+
+Tanpa entri ini, baris checksum tampil sebagai placeholder. Untuk file
+lokal di `downloads/` tidak perlu — SHA dihitung otomatis.
+
 **3. Taruh file build + generate:**
 
 ```bash

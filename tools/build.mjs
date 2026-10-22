@@ -51,6 +51,7 @@ function loadReleases() {
     notes: r.notes || "",
     changes: Array.isArray(r.changes) ? r.changes : [],
     files: { ...(r.files || {}) },
+    checksums: { ...(r.checksums || {}) },
   }));
   norm.sort((a, b) => cmpSemver(b.version, a.version)); // terbaru dulu
   return { site, list: norm, rawIsArray: Array.isArray(raw) };
@@ -136,10 +137,13 @@ function downloadCards(release, site, local) {
 
 function checksumBlock(release, local) {
   const v = release.version;
+  const sums = release.checksums || {};
   const lines = ASSETS.map((a) => {
     const r = assetHref(release.files, local, a.key, v, "");
-    if (r.sha) return `${r.sha}  ${r.file}`;
-    if (r.href !== "#") return `<sha256>  ${r.file}  (lihat file SHA256SUMS)`;
+    if (!r.file) return null;
+    const sha = r.sha || sums[r.file];
+    if (sha) return `${sha}  ${r.file}`;
+    if (r.href !== "#") return `<sha256>  ${r.file}  (sha belum diisi di releases.json)`;
     return null;
   }).filter(Boolean);
   if (lines.length === 0) {
@@ -345,6 +349,7 @@ if (newVer) {
     notes: `Ringkasan perubahan v${v} (isi manual).`,
     changes: [...(prev.changes || [])],
     files: Object.fromEntries(ASSETS.map((a) => [a.key, "#"])),
+    checksums: {},
   };
   const raw = JSON.parse(readFileSync(RELEASES_JSON, "utf8"));
   if (Array.isArray(raw)) raw.push(entry);
