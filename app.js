@@ -6,6 +6,7 @@
 var FALLBACK_RELEASE = {
   version: "v1.0.0",
   date: "22 Oktober 2026",
+  page: "https://musa.kacangan.net/release.html",
   notes: "Rilis pertama: pill + stats + Now Playing + timer + keep awake + quick actions + tray/hotkey + Settings.",
   files: {
     "x64-setup": "#",
