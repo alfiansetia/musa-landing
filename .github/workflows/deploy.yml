@@ -4,6 +4,9 @@ name: Deploy musa-landing
 on:
   push:
     branches: [main]
+  # Biar bisa di-run manual dari tab Actions (penting setelah gagal gara-gara
+  # secret belum lengkap — tidak perlu push kosong cuma buat trigger).
+  workflow_dispatch:
 
 jobs:
   deploy:
