@@ -1,0 +1,24 @@
+name: Deploy musa-landing
+
+# Tiap push ke main: SSH ke server, pull, rebuild image, restart container.
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ${{ secrets.PROJECT_PATH }}
+            git pull origin main
+            printf 'SITE_URL=%s\nPORT=%s\n' '${{ secrets.SITE_URL }}' '${{ secrets.PORT }}' > .env
+            docker compose up --build -d
+            docker image prune -f

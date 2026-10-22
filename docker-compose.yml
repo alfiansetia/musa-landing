@@ -1,10 +1,26 @@
 services:
   musa-landing:
+    container_name: musa-landing
     build:
       context: .
       args:
         SITE_URL: ${SITE_URL:-https://alfiansetia.github.io/musa-landing}
     image: musa-landing:latest
+    # Akses utama lewat tunnel (app-network) sebagai http://musa-landing:80.
+    # Mapping ports di bawah opsional — hapus kalau mau tunnel-only.
     ports:
       - "${PORT:-8080}:80"
+    networks:
+      - app-network
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/rilis/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  app-network:
+    name: app-network
+    external: true

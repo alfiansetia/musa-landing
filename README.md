@@ -175,8 +175,57 @@ aset, dan config. File hasil generate (`rilis/`, `version.json`,
 di dalam image saat `docker build` (tahap `builder` menjalankan
 `node tools/build.mjs`).
 
+## Deploy ke server via tunnel + auto-build SSH (produksi)
+
+Skenario: container jalan di network `app-network` (external, bareng
+tunnel), diakses tunnel sebagai `http://musa-landing:80`.
+
+**1. Siapkan server sekali saja:**
+
 ```bash
-# Build + jalan lokal
+docker network ls | grep app-network || docker network create app-network
+git clone <repo-ini> /opt/musa-landing   # = PROJECT_PATH
+```
+
+**2. Isi GitHub Secrets** (repo → Settings → Secrets → Actions):
+
+| Secret         | Wajib | Contoh / isi                              |
+| -------------- | ----- | ----------------------------------------- |
+| `SSH_HOST`     | ya    | IP / hostname server                      |
+| `SSH_USER`     | ya    | `root` / user deploy                       |
+| `SSH_KEY`      | ya    | private key (isi `~/.ssh/id_*` + pubkey ke `authorized_keys`) |
+| `PROJECT_PATH` | ya    | `/opt/musa-landing`                       |
+| `SSH_PORT`     | tidak | default `22`                              |
+| `SITE_URL`     | tidak | `https://musa.kacangan.net` (canonical produksi) |
+| `PORT`         | tidak | mapping host opsional, default `8080`     |
+
+**3. Push ke `main`** — workflow `.github/workflows/deploy.yml` otomatis:
+SSH → `git pull` → tulis `.env` dari Secrets → `docker compose up --build -d`
+→ `docker image prune`. Build halaman rilis (`node tools/build.mjs`)
+jalan di dalam tahap builder image, jadi yang di-push cukup `releases.json`.
+
+**4. Arahkan tunnel** ke service ini (contoh cloudflared di network yang sama):
+
+```yaml
+ingress:
+  - hostname: musa.kacangan.net
+    service: http://musa-landing:80
+  - service: http_status:404
+```
+
+Catatan:
+
+- `container_name: musa-landing` = hostname di `app-network`. Jangan ganti
+  tanpa update config tunnel.
+- Mapping `ports:` hanya untuk cek langsung/debug. Hapus blok itu kalau
+  mau tunnel-only.
+- Healthcheck (`GET /rilis/`) memudahkan deteksi container belum siap.
+
+## Deploy lokal (Docker)
+
+```bash
+# Butuh network-nya juga (sekali saja):
+docker network create app-network
 docker compose up --build
 # buka http://localhost:8080/ dan http://localhost:8080/rilis/
 
