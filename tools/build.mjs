@@ -193,13 +193,15 @@ function pageShell({ title, desc, canonical, site, jsonLdObj, body, depth }) {
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(desc)}" />
   <meta property="og:url" content="${esc(canonical)}" />
-  <meta property="og:image" content="${esc(absAsset("assets/og-image.svg"))}" />
+  <meta property="og:image" content="${esc(absAsset("assets/og-image.png"))}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${esc(title)}" />
   <meta name="twitter:description" content="${esc(desc)}" />
-  <meta name="twitter:image" content="${esc(absAsset("assets/og-image.svg"))}" />
-  <link rel="icon" type="image/svg+xml" href="${pre}assets/favicon.svg" />
-  <link rel="apple-touch-icon" href="${pre}assets/apple-touch-icon.svg" />
+  <meta name="twitter:image" content="${esc(absAsset("assets/og-image.png"))}" />
+  <link rel="icon" type="image/x-icon" href="${pre}assets/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="${pre}assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="${pre}assets/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="${pre}assets/apple-touch-icon.png" />
   <link rel="manifest" href="${pre}site.webmanifest" />
   <link rel="stylesheet" href="${pre}styles.css" />${ld}
 </head>
@@ -213,7 +215,7 @@ ${body}
 function nav(pre) {
   return `  <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="${pre}index.html"><img src="${pre}assets/logo.svg" alt="Logo Musa" width="30" height="30" />Musa</a>
+      <a class="brand" href="${pre}index.html"><img src="${pre}assets/logo.png" alt="Logo Musa" width="30" height="30" />Musa</a>
       <nav class="nav-links">
         <a href="${pre}index.html#fitur">Fitur</a>
         <a href="${pre}index.html#download">Download</a>

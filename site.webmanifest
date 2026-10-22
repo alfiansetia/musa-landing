@@ -3,7 +3,8 @@
   "short_name": "Musa",
   "description": "Overlay pill ala Dynamic Island untuk desktop: kecil, mengembang saat hover, click-through.",
   "icons": [
-    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+    { "src": "assets/logo-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/logo.png", "sizes": "512x512", "type": "image/png" }
   ],
   "theme_color": "#0a0a0c",
   "background_color": "#0a0a0c",
