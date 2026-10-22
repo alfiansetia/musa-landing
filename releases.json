@@ -16,10 +16,10 @@
       "files": {
         "x64-setup": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_x64-setup.exe",
         "x86-setup": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_x86-setup.exe",
-        "dmg": "#",
-        "app-targz": "#",
-        "deb": "#",
-        "appimage": "#"
+        "dmg": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_aarch64.dmg",
+        "app-targz": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_aarch64.app.tar.gz",
+        "deb": "https://files.musa.kacangan.net/v1.0.0/musa_1.0.0_amd64.deb",
+        "appimage": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_amd64.AppImage"
       },
       "checksums": {
         "Musa_1.0.0_x64-setup.exe": "a28c054e935f71dd26852f48f26b362166628939b91400f8f9be792e75e6e35d",
