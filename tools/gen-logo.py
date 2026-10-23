@@ -25,20 +25,34 @@ bg.convert("RGB").save("assets/apple-touch-icon.png", "PNG", optimize=True)
 print("assets/apple-touch-icon.png", os.path.getsize("assets/apple-touch-icon.png"))
 
 W, H = 1200, 630
-og = Image.new("RGB", (W, H), (10, 10, 12))
+og = Image.new("RGB", (W, H), (7, 9, 13))
 draw = ImageDraw.Draw(og)
+# grid halus ala landing baru
+for x in range(0, W, 44):
+    draw.line([(x, 0), (x, H)], fill=(22, 28, 38))
+for y in range(0, H, 44):
+    draw.line([(0, y), (W, y)], fill=(22, 28, 38))
+# glow biru di belakang logo
+draw.ellipse([20, 40, 560, 590], fill=(14, 22, 36))
 lg = src.resize((380, 380), Image.LANCZOS)
 og.paste(lg, (110, (H - 380) // 2), lg)
 try:
     f_title = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 130)
     f_sub = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 44)
-    f_small = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 32)
+    f_small = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 32)
 except Exception as e:
     print("font fail", e)
     f_title = f_sub = f_small = ImageFont.load_default()
-draw.text((560, 180), "Musa", font=f_title, fill=(242, 242, 244))
-draw.text((562, 340), "Dynamic Island", font=f_sub, fill=(167, 167, 179))
-draw.text((562, 395), "untuk desktop.", font=f_sub, fill=(167, 167, 179))
-draw.text((562, 470), "Windows \u00b7 macOS ARM \u00b7 Linux", font=f_small, fill=(77, 227, 194))
+draw.text((560, 170), "Musa", font=f_title, fill=(238, 242, 246))
+draw.text((562, 330), "Pill kecil", font=f_sub, fill=(154, 166, 181))
+draw.text((562, 385), "yang tahu diri.", font=f_sub, fill=(154, 166, 181))
+draw.text((562, 465), "Windows \u00b7 macOS ARM \u00b7 Linux", font=f_small, fill=(94, 177, 255))
+# aksen gradasi biru logo -> cyan
+for i in range(158):
+    t = i / 157
+    r = round(94 + (77 - 94) * t)
+    g = round(177 + (227 - 177) * t)
+    b = round(255 + (194 - 255) * t)
+    draw.line([(562 + i, 520), (562 + i, 528)], fill=(r, g, b))
 og.save("assets/og-image.png", "PNG", optimize=True)
 print("assets/og-image.png", os.path.getsize("assets/og-image.png"))

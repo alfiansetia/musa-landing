@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Musa — Dynamic Island untuk Desktop (Windows, macOS, Linux)</title>
-  <meta name="description" content="Musa adalah overlay pill ala Dynamic Island untuk desktop: kecil di atas layar, mengembang saat hover, click-through di luar pill. Download untuk Windows 11, macOS ARM, dan Linux." />
+  <title>Musa — Pill kecil yang tahu diri untuk desktop (Windows, macOS, Linux)</title>
+  <meta name="description" content="Musa adalah pill kecil di atas layar: diam saat tidak dibutuhkan, mengembang saat hover, klik di luar pill tembus ke aplikasi. Untuk Windows 11, macOS ARM, dan Linux. Lokal, ringan, tanpa akun." />
   <link rel="canonical" href="https://musa.kacangan.net/" />
-  <meta name="theme-color" content="#0a0a0c" />
+  <meta name="theme-color" content="#07090d" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Musa" />
-  <meta property="og:title" content="Musa — Dynamic Island untuk Desktop" />
-  <meta property="og:description" content="Pill kecil di tengah atas layar. Diam saat tidak dibutuhkan, mengembang saat hover. Windows 11 · macOS ARM · Ubuntu x64." />
+  <meta property="og:title" content="Musa — Pill kecil yang tahu diri" />
+  <meta property="og:description" content="Diam saat tidak dibutuhkan, mengembang saat hover. Klik tembus, 100% lokal. Windows 11 · macOS ARM · Ubuntu x64." />
   <meta property="og:url" content="https://musa.kacangan.net/" />
   <meta property="og:image" content="https://musa.kacangan.net/assets/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Musa — Dynamic Island untuk Desktop" />
+  <meta name="twitter:title" content="Musa — Pill kecil yang tahu diri" />
   <meta name="twitter:description" content="Overlay pill: kecil, mengembang saat hover, click-through. Download Windows, macOS ARM, Linux." />
   <meta name="twitter:image" content="https://musa.kacangan.net/assets/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
@@ -35,18 +35,18 @@
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": ["Windows 11", "macOS", "Linux"],
     "softwareVersion": "1.0.0",
-    "description": "Dynamic Island-style overlay untuk desktop: pill kecil, expand saat hover, click-through.",
+    "description": "Overlay pill untuk desktop: kecil saat diam, mengembang saat hover, click-through di luar pill.",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IDR" }
   }
   </script>
 </head>
 <body>
-  <div class="mascot" aria-hidden="true"><div class="eyes"><i class="eye"></i><i class="eye"></i></div></div>
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="index.html"><img src="assets/logo.png" alt="Logo Musa" width="30" height="30" />Musa</a>
+      <a class="brand" href="index.html"><img src="assets/logo.png" alt="Logo Musa" width="30" height="30" /><span>Musa</span><code class="ver" id="ver-badge-nav">v1.0.0</code></a>
       <nav class="nav-links">
         <a href="#fitur">Fitur</a>
+        <a href="#os">3 OS</a>
         <a href="#download">Download</a>
         <a href="#faq">FAQ</a>
         <a href="rilis/">Rilis</a>
@@ -56,161 +56,279 @@
   </header>
 
   <main>
-    <!-- Hero / perkenalan -->
+    <!-- Hero split: copy kiri, desktop mockup kanan -->
     <section class="hero wrap">
-      <img class="hero-logo" src="assets/logo.png" alt="Logo Musa" width="120" height="120" />
-      <p class="badge"><span id="ver-badge">v1.0.0</span> · sekarang tersedia</p>
-      <h1>Dynamic Island<br />untuk desktop.</h1>
-      <p class="lede">
-        Musa adalah pill kecil di tengah atas layar. Diam saat tidak dibutuhkan,
-        mengembang saat hover — dan klik di luar pill selalu tembus ke aplikasi
-        di bawahnya. Tanpa Dock icon, tanpa jendela yang mengganggu.
-      </p>
-      <div class="cta-row">
-        <a class="btn" id="cta-primary" href="#download">Download untuk Windows</a>
-        <a class="btn btn-ghost" href="rilis/">Lihat halaman rilis</a>
-      </div>
-      <p class="meta" id="os-hint"></p>
-      <p class="meta">Windows 11 · macOS ARM · Ubuntu x64 · ±3,7 MB · idle ±26 MB RAM</p>
-      <div class="pill-demo" aria-hidden="true">
-        <div class="pill-demo-bar">
-          <span class="pill-demo-dot"></span>
-          <span class="pill-demo-clock">12:30</span>
-          <span class="pill-demo-stat">CPU 8%</span>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse"></span><span id="ver-badge">v1.0.0</span><span class="sep">·</span><span>100% lokal · tanpa akun</span></p>
+        <h1>Pill kecil<br />yang <em>tahu diri.</em></h1>
+        <p class="lede">
+          Musa nongkrong di tengah atas layar. Diam saat kamu kerja,
+          mengembang saat di-hover — dan klik di luar pill selalu tembus
+          ke aplikasi di bawahnya. Tidak pernah menghalangi.
+        </p>
+        <div class="cta-row">
+          <a class="btn" id="cta-primary" href="#download">Download untuk Windows</a>
+          <a class="btn btn-ghost" href="rilis/">Catatan rilis</a>
         </div>
+        <p class="meta mono" id="os-hint"></p>
+        <div class="chips" aria-label="Ringkas spesifikasi">
+          <span class="chip"><b>3</b> OS</span>
+          <span class="chip"><b>±3,7</b> MB</span>
+          <span class="chip">idle <b>±26</b> MB</span>
+          <span class="chip"><b>0</b> tracking</span>
+        </div>
+      </div>
+
+      <div class="hero-demo">
+        <div class="desk" aria-label="Demo pill Musa">
+          <div class="desk-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="desk-title mono">desktop — arahkan kursor ke pill</span>
+            <img class="desk-musa" src="assets/logo.png" alt="" width="20" height="20" />
+          </div>
+          <div class="desk-screen">
+            <div class="wallpaper"></div>
+            <div class="clickzone" aria-hidden="true"><span class="mono">klik tembus</span></div>
+            <div class="pill" aria-hidden="true">
+              <div class="pill-top">
+                <span class="pill-dot"></span>
+                <span class="mono pill-clock">12:30</span>
+                <span class="mono pill-stat">CPU 8%</span>
+                <img class="pill-musa" src="assets/logo.png" alt="" width="22" height="22" />
+              </div>
+              <div class="pill-expand">
+                <div class="pill-row">
+                  <img src="assets/logo.png" alt="" width="34" height="34" />
+                  <div class="pill-song">
+                    <strong>Paper Sky</strong>
+                    <span class="mono">Lumen Coast · 02:59</span>
+                    <span class="seek"><i style="width:62%"></i></span>
+                  </div>
+                  <span class="pill-play"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="3" y="2" width="3.4" height="12" rx="1" fill="currentColor"/><rect x="9.6" y="2" width="3.4" height="12" rx="1" fill="currentColor"/></svg></span>
+                </div>
+                <div class="pill-row mono small">
+                  <span class="pill-feat"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><circle cx="8" cy="8" r="6.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.6V8l2.4 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>25:00 fokus</span>
+                  <span class="pill-feat"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 1.5v1.8M8 12.7v1.8M1.5 8h1.8M12.7 8h1.8M3.4 3.4l1.3 1.3M11.3 11.3l1.3 1.3M12.6 3.4l-1.3 1.3M4.7 11.3l-1.3 1.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>tahan sleep</span>
+                  <span class="pill-feat"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>kunci layar</span>
+                </div>
+              </div>
+            </div>
+            <p class="desk-hint mono">hover pill untuk mengembang · geser kursor pergi untuk menciut</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strip OS -->
+    <section class="strip wrap" aria-label="Dukungan OS">
+      <div class="strip-inner mono">
+        <span>Windows 11</span><i>◆</i>
+        <span>macOS ARM</span><i>◆</i>
+        <span>Ubuntu x64</span><i>◆</i>
+        <span class="dim">satu pill, tiga rumah</span>
       </div>
     </section>
 
     <!-- Download -->
     <section id="download" class="wrap section">
-      <h2>Download</h2>
+      <p class="kicker mono">01 — download</p>
+      <h2>Ambil yang cocok buat mesinmu.</h2>
       <p class="section-sub">
-        Unduh installer di bawah. Link aktif setelah file diupload ke hosting publik.
-        Cek update dari aplikasi via Settings → General → Update (cek manual, tanpa auto-download).
+        Installer per-OS, tanpa admin di Windows. Build masih unsigned jadi
+        SmartScreen / Gatekeeper cerewet — itu normal.
+        <a href="rilis/">Cara install + checksum →</a>
       </p>
-      <p class="meta">Build masih unsigned — SmartScreen/Gatekeeper menampilkan peringatan (normal). <a href="rilis/">Cara install + checksum per versi →</a></p>
       <div class="cards" id="dl-cards">
-        <article class="card" data-os-card="windows">
+        <article class="card dl" data-os-card="windows">
+          <p class="mono card-no">WIN</p>
           <h3>Windows</h3>
-          <p class="os">Windows 11 · x64 / x86 · NSIS per-user, tanpa admin</p>
+          <p class="os">Windows 11 · x64 / x86 · NSIS per-user</p>
           <a class="btn btn-small" data-asset="x64-setup" href="#">Musa x64-setup.exe</a>
           <a class="link" data-asset="x86-setup" href="#">versi x86</a>
         </article>
-        <article class="card" data-os-card="macos">
+        <article class="card dl" data-os-card="macos">
+          <p class="mono card-no">MAC</p>
           <h3>macOS</h3>
-          <p class="os">Apple Silicon (ARM64) · .app + DMG · aksesori menu-bar, tanpa Dock icon</p>
+          <p class="os">Apple Silicon · .app + DMG · tanpa Dock icon</p>
           <a class="btn btn-small" data-asset="dmg" href="#">Musa .dmg</a>
           <a class="link" data-asset="app-targz" href="#">.app.tar.gz</a>
         </article>
-        <article class="card" data-os-card="linux">
+        <article class="card dl" data-os-card="linux">
+          <p class="mono card-no">NIX</p>
           <h3>Linux</h3>
-          <p class="os">Ubuntu x64 · .deb / AppImage · X11 disarankan, Wayland terbatas</p>
+          <p class="os">Ubuntu x64 · .deb / AppImage · X11 disarankan</p>
           <a class="btn btn-small" data-asset="deb" href="#">Musa .deb</a>
           <a class="link" data-asset="appimage" href="#">AppImage</a>
         </article>
       </div>
-      <p class="meta" id="dl-meta">Terbaru: v1.0.0 · link aktif setelah file diupload ke hosting publik.</p>
+      <p class="meta mono" id="dl-meta">Terbaru: v1.0.0</p>
     </section>
 
-    <!-- Fitur -->
+    <!-- Fitur: tab preview -->
     <section id="fitur" class="wrap section">
-      <h2>Fitur</h2>
-      <p class="section-sub">Semua berjalan lokal di mesinmu. Tidak ada akun, tidak ada analytic, tidak ada server.</p>
-      <div class="grid">
+      <p class="kicker mono">02 — kenapa Musa</p>
+      <h2>Tidak numpang lewat.<br />Tidak minta perhatian.</h2>
+      <p class="section-sub">Semua jalan lokal. Tidak ada akun, analytic, atau server. Yang keluar mesin cuma cek versi manual kalau kamu yang pencet.</p>
+      <div class="tabs" role="tablist" aria-label="Preview fitur">
+        <button class="tab" role="tab" id="tab-media" aria-controls="panel-media" aria-selected="true" data-desc="Windows: SMTC penuh — judul, artis, artwork, seek, shuffle, repeat, kecepatan. macOS: Spotify + Music via AppleScript. Tombol yang tidak didukung tampil disabled."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="4" cy="12" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.2 12V4.5L14 3v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>media</button>
+        <button class="tab" role="tab" id="tab-lirik" aria-controls="panel-lirik" aria-selected="false" tabindex="-1" data-desc="Lirik sinkron via LRCLIB (opt-in, cache memori 40 lagu, tidak ditulis ke disk). Baris aktif auto-scroll di view media, dan tampil sebagai subtitle saat pill ciut."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 3.5h10M3 8h10M3 12.5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>lirik</button>
+        <button class="tab" role="tab" id="tab-timer" aria-controls="panel-timer" aria-selected="false" tabindex="-1" data-desc="Preset 5 / 10 / 25 menit + stopwatch. Deadline hidup di Rust — collapse atau reload tidak me-reset. Berdenyut sekali saat selesai."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="8" cy="9" r="5.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 6v3.2l2.2 1.4M6.5 2.5h3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>timer</button>
+        <button class="tab" role="tab" id="tab-shelf" aria-controls="panel-shelf" aria-selected="false" tabindex="-1" data-desc="Drag file atau folder ke pill (maks 100, teks/URL 64KB, gambar 10MB), drag keluar ke chat atau email. Clipboard teks opsional, opt-in."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h3l1.5 2h4A1.5 1.5 0 0 1 13.5 7.5v4a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 11.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>shelf</button>
+        <button class="tab" role="tab" id="tab-stats" aria-controls="panel-stats" aria-selected="false" tabindex="-1" data-desc="CPU / RAM / baterai / unduh / unggah di pill ciut. Sampling native tiap 2 detik. Slot baterai kosong otomatis di PC tanpa baterai."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2.5 13.5V8M6.5 13.5V5M10.5 13.5V9.5M14.5 13.5V3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>stats</button>
+        <button class="tab" role="tab" id="tab-gaya" aria-controls="panel-gaya" aria-selected="false" tabindex="-1" data-desc="Tiga gaya notch — Dynamic, Bulat, Poni — plus mode mata santai saat idle 60 detik. Ukuran compact / regular / large, opasitas 40–100%."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="1.5" y="5.5" width="8" height="5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12.5" cy="8" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>gaya</button>
+        <button class="tab" role="tab" id="tab-mixer" aria-controls="panel-mixer" aria-selected="false" tabindex="-1" data-desc="Mixer volume per aplikasi + spectrum 24-band. Khusus Windows — di OS lain view-nya bilang terus terang tidak tersedia."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 5.5h10M3 8h10M3 10.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="5.5" r="1.6" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="8" r="1.6" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/><circle cx="7.5" cy="10.5" r="1.6" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/></svg>mixer</button>
+        <button class="tab" role="tab" id="tab-aksi" aria-controls="panel-aksi" aria-selected="false" tabindex="-1" data-desc="Dua tombol saja: Task Manager dan kunci layar. Keep-awake sesi menahan system sleep, selalu mati tiap launch. Tray: Autohide / Force hide / Force show / Settings / Start at login / Quit."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M9 1.5L3.5 9H8l-1 5.5L12.5 7H8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>aksi</button>
+      </div>
+
+      <div class="stage" aria-live="polite">
+        <div class="stage-bar mono" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span>musa — expanded 440×200</span></div>
+
+        <div class="panel" id="panel-media" role="tabpanel" aria-labelledby="tab-media" aria-hidden="true">
+          <div class="pv-media">
+            <span class="pv-art"></span>
+            <div class="pv-song">
+              <strong>Paper Sky</strong>
+              <span class="mono">Lumen Coast · 02:59 / 04:12</span>
+              <span class="pv-seek"><i style="width:62%"></i></span>
+              <div class="pv-ctrl">
+                <span class="pv-chip mono">shuffle</span>
+                <span class="pv-btns"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 2.5v11l7-5.5z" fill="currentColor"/><rect x="11" y="2.5" width="2.4" height="11" rx="0.8" fill="currentColor"/></svg><svg viewBox="0 0 16 16" width="17" height="17"><rect x="3" y="2" width="3.4" height="12" rx="1" fill="currentColor"/><rect x="9.6" y="2" width="3.4" height="12" rx="1" fill="currentColor"/></svg><svg viewBox="0 0 16 16" width="14" height="14"><path d="M13 2.5v11l-7-5.5z" fill="currentColor"/><rect x="2.6" y="2.5" width="2.4" height="11" rx="0.8" fill="currentColor"/></svg></span>
+                <span class="pv-chip mono">1×</span>
+              </div>
+            </div>
+          </div>
+          <div class="pv-spec" aria-hidden="true"><i style="height:38%"></i><i style="height:64%"></i><i style="height:28%"></i><i style="height:82%"></i><i style="height:52%"></i><i style="height:70%"></i><i style="height:34%"></i><i style="height:58%"></i><i style="height:76%"></i><i style="height:44%"></i><i style="height:62%"></i><i style="height:30%"></i></div>
+        </div>
+
+        <div class="panel" id="panel-lirik" role="tabpanel" aria-labelledby="tab-lirik" hidden aria-hidden="true">
+          <div class="pv-lyr" aria-hidden="true">
+            <span>we fold the summer light</span>
+            <span class="active">into paper birds tonight</span>
+            <span>and send them through the sky</span>
+          </div>
+          <p class="mono pv-sub">synced via LRCLIB · juga tampil sebagai subtitle saat ciut</p>
+        </div>
+
+        <div class="panel" id="panel-timer" role="tabpanel" aria-labelledby="tab-timer" hidden aria-hidden="true">
+          <p class="mono pv-timer">25:00</p>
+          <p class="mono pv-sub">fokus · deadline di Rust</p>
+          <div class="pv-presets mono" aria-hidden="true"><span class="on">25</span><span>10</span><span>5</span><span>stopwatch</span><span class="ghost">clear</span></div>
+        </div>
+
+        <div class="panel" id="panel-shelf" role="tabpanel" aria-labelledby="tab-shelf" hidden aria-hidden="true">
+          <div class="pv-shelf">
+            <span class="pv-file"><b class="pv-thumb jpg">JPG</b><span><strong>beach.jpg</strong><span class="mono">2.4 MB</span></span></span>
+            <span class="pv-file"><b class="pv-thumb pdf">PDF</b><span><strong>Slide.pdf</strong><span class="mono">812 KB</span></span></span>
+            <span class="pv-file"><b class="pv-thumb url">URL</b><span><strong>bacaan</strong><span class="mono">tautan</span></span></span>
+          </div>
+          <p class="mono pv-sub">3 / 100 · drop file di sini · drag keluar kapan saja</p>
+        </div>
+
+        <div class="panel" id="panel-stats" role="tabpanel" aria-labelledby="tab-stats" hidden aria-hidden="true">
+          <div class="pv-slots">
+            <span class="pv-slot"><svg viewBox="0 0 30 30" width="34" height="34"><circle cx="15" cy="15" r="12" fill="none" stroke="rgba(238,242,246,.15)" stroke-width="3.5"/><circle cx="15" cy="15" r="12" fill="none" stroke="var(--brand)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 75.4" transform="rotate(-90 15 15)"/></svg><span><strong class="mono">8%</strong><span class="mono">CPU</span></span></span>
+            <span class="pv-slot"><svg viewBox="0 0 30 30" width="34" height="34"><circle cx="15" cy="15" r="12" fill="none" stroke="rgba(238,242,246,.15)" stroke-width="3.5"/><circle cx="15" cy="15" r="12" fill="none" stroke="var(--acc2)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="31 75.4" transform="rotate(-90 15 15)"/></svg><span><strong class="mono">41%</strong><span class="mono">RAM</span></span></span>
+            <span class="pv-slot"><span class="mono pv-net">↓ 1.2 MB/s<br />↑ 240 KB/s</span></span>
+          </div>
+          <p class="mono pv-sub">sampling native tiap 2 detik</p>
+        </div>
+
+        <div class="panel" id="panel-gaya" role="tabpanel" aria-labelledby="tab-gaya" hidden aria-hidden="true">
+          <div class="pv-styles" aria-hidden="true">
+            <span class="pv-shape dynamic"><i></i><i></i></span>
+            <span class="pv-shape bulat"><b class="mono">12:30</b></span>
+            <span class="pv-shape poni"><i></i><i></i><b></b></span>
+          </div>
+          <p class="mono pv-sub">dynamic · bulat · poni — mata santai saat idle</p>
+        </div>
+
+        <div class="panel" id="panel-mixer" role="tabpanel" aria-labelledby="tab-mixer" hidden aria-hidden="true">
+          <div class="pv-mixrow"><span>System sounds</span><span class="pv-vol"><i style="width:70%"></i></span><span class="mono">70</span></div>
+          <div class="pv-mixrow"><span>Spotify</span><span class="pv-vol"><i style="width:45%"></i></span><span class="mono">45</span></div>
+          <div class="pv-mixrow"><span>Chrome</span><span class="pv-vol"><i style="width:20%"></i></span><span class="mono">20</span></div>
+          <p class="mono pv-sub">khusus Windows · polling 1 Hz saat view terbuka</p>
+        </div>
+
+        <div class="panel" id="panel-aksi" role="tabpanel" aria-labelledby="tab-aksi" hidden aria-hidden="true">
+          <div class="pv-actions">
+            <span class="pv-act"><svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="2" width="12" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 13.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Task Manager</span>
+            <span class="pv-act"><svg viewBox="0 0 16 16" width="14" height="14"><rect x="3" y="7" width="10" height="7" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Kunci layar</span>
+            <span class="pv-act on"><svg viewBox="0 0 16 16" width="14" height="14"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5v1.8M8 12.7v1.8M1.5 8h1.8M12.7 8h1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tahan sleep · sesi ini</span>
+          </div>
+          <p class="mono pv-sub">tray + <kbd>Ctrl+Shift+M</kbd> sebagai jalur darurat</p>
+        </div>
+      </div>
+      <p class="feat-desc" id="feat-desc">Windows: SMTC penuh — judul, artis, artwork, seek, shuffle, repeat, kecepatan. macOS: Spotify + Music via AppleScript. Tombol yang tidak didukung tampil disabled.</p>
+    </section>
+
+    <!-- 3 OS -->
+    <section id="os" class="wrap section">
+      <p class="kicker mono">03 — satu pill, tiga OS</p>
+      <h2>Satu pill, tiga OS.<br />Tetap ringan di semuanya.</h2>
+      <div class="os-grid">
         <article class="card">
-          <span class="app" style="--c1:#7c6cff;--c2:#4de3c2"><svg viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="7" rx="3.5"/></svg></span>
-          <div><h3>Pill yang tahu diri</h3>
-          <p>Collapsed mungil (compact / regular / large), mengembang saat hover, menciut saat kursor pergi. Easing spring, bisa reduce-motion.</p></div>
+          <h3><svg class="os-ico" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><rect x="1.5" y="1.5" width="5.8" height="5.8" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="8.7" y="1.5" width="5.8" height="5.8" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="1.5" y="8.7" width="5.8" height="5.8" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="8.7" y="8.7" width="5.8" height="5.8" rx="1" fill="currentColor"/></svg>Windows</h3>
+          <p class="mono dim">pengalaman penuh</p>
+          <p>SMTC, artwork 2MB, mixer volume, spectrum 24-band, quick actions, keep-awake. NSIS per-user, WebView2 bawaan Win 11.</p>
         </article>
         <article class="card">
-          <span class="app" style="--c1:#5fb2ff;--c2:#1f55d6"><svg viewBox="0 0 24 24"><path d="M7 3l13 9-8 1.5L9 21z"/></svg></span>
-          <div><h3>Click-through</h3>
-          <p>Hanya pill yang menerima klik. Area transparan di sekitarnya tembus ke desktop — overlay tidak pernah menghalangi kerja.</p></div>
+          <h3><svg class="os-ico" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><rect x="2" y="2" width="12" height="9" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 13.5h4M8 11v2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>macOS</h3>
+          <p class="mono dim">aksesoris menu-bar</p>
+          <p>Tanpa Dock icon. Now Playing Spotify + Music saja (browser tidak terdeteksi). Klik kanan → Open sekali untuk build unsigned.</p>
         </article>
         <article class="card">
-          <span class="app" style="--c1:#7fe0ff;--c2:#2d6bff"><svg viewBox="0 0 24 24"><path d="M5 20v-8M11 20V6M17 20v-5M3 20h18"/></svg></span>
-          <div><h3>Statistik 2 detik</h3>
-          <p>Satu metrik di pill ciut: CPU / RAM / baterai (default CPU). Sampling native tiap 2 detik, slot baterai kosong otomatis di PC tanpa baterai.</p></div>
-        </article>
-        <article class="card">
-          <span class="app" style="--c1:#ff6aa2;--c2:#8b3dff"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="17" r="2.6"/><circle cx="17" cy="15" r="2.6"/><path d="M10.1 17V6l9.5-2v11"/></svg></span>
-          <div><h3>Now Playing</h3>
-          <p>Windows via SMTC: judul, artis, artwork, play/pause/skip, seek bar, shuffle, repeat, rate. Kontrol yang tidak didukung player tampil disabled.</p></div>
-        </article>
-        <article class="card">
-          <span class="app" style="--c1:#ff8a7a;--c2:#e8243a"><svg viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.5M10 3h4M12 3v3"/></svg></span>
-          <div><h3>Timer &amp; stopwatch</h3>
-          <p>Preset 5 / 10 / 25 menit plus stopwatch. Deadline hidup di Rust — collapse atau reload webview tidak me-reset. Pill berdenyut sekali saat selesai.</p></div>
-        </article>
-        <article class="card">
-          <span class="app" style="--c1:#ffd76a;--c2:#f08a1d"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.5 17.5l-2 2"/></svg></span>
-          <div><h3>Keep awake sesi</h3>
-          <p>Ikon matahari menahan system sleep selagi aktif (display sleep tetap boleh). Selalu mati tiap launch — bukan setting permanen.</p></div>
-        </article>
-        <article class="card">
-          <span class="app" style="--c1:#6ee79a;--c2:#159a45"><svg viewBox="0 0 24 24"><path d="M13 2.5 5.5 13.2h5.3l-1.3 8.3 7.5-10.7h-5.3z"/></svg></span>
-          <div><h3>Quick actions</h3>
-          <p>Task Manager, kunci layar, dan shortcut ke pengaturan Do Not Disturb — sekali klik dari header expanded.</p></div>
-        </article>
-        <article class="card">
-          <span class="app" style="--c1:#b6bfd0;--c2:#5a6378"><svg viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 14 6 10z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span>
-          <div><h3>Tray + hotkey + autostart</h3>
-          <p>Tray: Autohide / Force hide / Force show / Settings / Start at login / Quit. Hotkey global <kbd>Ctrl+Shift+N</kbd> sebagai jalur darurat. Autostart per-user, nonaktif di portable mode.</p></div>
+          <h3><svg class="os-ico" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><rect x="2" y="2.5" width="12" height="8" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12.5l-1.4 2M11 12.5l1.4 2M4.5 6.2h.9M7 6.2h.9M9.5 6.2h.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M5.5 8.5h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Linux</h3>
+          <p class="mono dim">bukan target v1</p>
+          <p>Now Playing, mixer, quick actions, keep-awake stub — UI hide/disable. X11 disarankan, Wayland terbatas, wajib tes mesin asli.</p>
         </article>
       </div>
     </section>
 
-    <!-- Cara kerja singkat -->
+    <!-- Cara pakai terminal -->
     <section class="wrap section">
-      <h2>Cara pakai</h2>
-      <ol class="steps">
-        <li><strong>Install</strong> — Windows: jalankan NSIS per-user. macOS: seret .app ke Applications, klik kanan → Open sekali. Linux: install .deb atau chmod +x AppImage.</li>
-        <li><strong>Hover pill</strong> di tengah atas layar untuk membuka panel. Tinggalkan untuk menciutkan.</li>
-        <li><strong>Atur</strong> lewat ikon gear: layar follow-cursor, ukuran pill, offset, opasitas, autostart. Update dicek manual dari Settings.</li>
-      </ol>
+      <p class="kicker mono">04 — cara pakai</p>
+      <h2>Tiga langkah, jalan.</h2>
+      <div class="term">
+        <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="mono">musa — setup</span></div>
+        <div class="term-body mono">
+          <p><span class="prompt">$</span> install — jalankan installer per-OS di atas</p>
+          <p><span class="prompt">$</span> hover pill di tengah atas untuk membuka panel</p>
+          <p><span class="prompt">$</span> atur via gear: layar follow-cursor, ukuran, offset, autostart</p>
+          <p class="dim"># tinggalkan kursor → pill menciut sendiri. update dicek manual dari Settings.</p>
+        </div>
+      </div>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="wrap section">
-      <h2>FAQ</h2>
+      <p class="kicker mono">05 — faq</p>
+      <h2>Yang sering ditanya.</h2>
       <details open>
         <summary>Kenapa klik di sekitar pill tembus ke bawah?</summary>
-        <p>Itu invarian inti Musa. Frontend melaporkan rect pill ke Rust tiap frame, lalu thread hit-test mengalihkan <code>ignoreCursorEvents</code> saat kursor di luar pill. Jadi overlay selebar 520px tapi hanya pill yang interaktif.</p>
+        <p>Itu maunya Musa. Hanya pill-nya yang menerima klik, area transparan di sekitarnya diteruskan ke aplikasi di bawah. Jadi overlay tidak pernah menghalangi kerja.</p>
       </details>
       <details>
-        <summary>Bedanya Autohide, Force hide, dan Force show?</summary>
-        <p><strong>Autohide</strong>: pill sembunyi saat kursor pergi, muncul lagi saat kursor menyentuh tepi atas. <strong>Force hide</strong>: sembunyi dan dikunci — zona reveal autohide ikut nonaktif sampai kamu show manual. <strong>Force show</strong> (juga via tray / <kbd>Ctrl+Shift+N</kbd> / Settings): membuka kunci dan menampilkan lagi. Status force hanya sesi ini; restart selalu mulai tampil.</p>
+        <summary>Bedanya sembunyi otomatis vs sembunyi paksa?</summary>
+        <p>Otomatis: pill muncul lagi saat kursor menyentuh tepi atas. Paksa: dikunci sembunyi sampai kamu tampilkan manual via tray atau <kbd>Ctrl+Shift+M</kbd>. Tiap restart selalu mulai tampil.</p>
       </details>
       <details>
-        <summary>Fitur apa yang terbatas di Linux?</summary>
-        <p>Now Playing disembunyikan (tidak ada SMTC), Mixer “unavailable”, quick actions mengembalikan error, dan keep-awake disabled. UI-nya otomatis hide/disable — itu stub yang disengaja, bukan bug. Overlay transparan + click-through wajib dites di mesin asli (X11 vs Wayland, ikon tray tiap desktop).</p>
+        <summary>Kenapa ada peringatan saat install?</summary>
+        <p>Karena build v1 belum ditandatangani (unsigned). Di Windows pilih <em>More info → Run anyway</em>, di macOS klik kanan → <em>Open</em>. Pastikan file dari halaman ini dan cocokkan checksum di halaman rilis.</p>
       </details>
       <details>
-        <summary>Kenapa Windows/macOS menampilkan peringatan saat install?</summary>
-        <p>Karena build v1 <strong>unsigned</strong>: belum ada Authenticode (Windows) dan belum notarization (macOS). Di macOS, klik kanan → Open, atau <code>xattr -dr com.apple.quarantine Musa.app</code> untuk build lokal. Jangan distribusikan sebagai rilis resmi sebelum signing.</p>
-      </details>
-      <details>
-        <summary>Apakah ada auto-update?</summary>
-        <p>Tidak di v1 — by design. Settings → General → Update hanya membandingkan <code>version.txt</code> di repo dengan versi berjalan, lalu mengarahkanmu download manual dari halaman rilis. Tidak ada yang diunduh/diinstall otomatis.</p>
-      </details>
-      <details>
-        <summary>Bagaimana autostart &amp; portable mode?</summary>
-        <p>Start at login tersedia di tray dan Settings, off by default, registrasi per-user (Windows: <code>HKCU…\Run</code>, macOS: LaunchAgent). Portable jika <code>NOTCH_PORTABLE=1</code> atau ada file <code>portable</code> di sebelah executable — menu autostart terkunci.</p>
-      </details>
-      <details>
-        <summary>Apakah dataku keluar dari mesin?</summary>
-        <p>Tidak. Stats, media (artwork 2 MB di-cache di memori saja), timer, dan settings JSON semuanya lokal. Satu-satunya network adalah cek versi manual ke <code>raw.githubusercontent.com</code> saat kamu menekan tombol update. Detail: <a href="privasi/">Kebijakan Privasi</a>.</p>
+        <summary>Apakah dataku dikirim ke mana-mana?</summary>
+        <p>Tidak. Stats, timer, dan setting tersimpan lokal sebagai JSON. Satu-satunya koneksi adalah saat kamu menekan tombol cek update. Detail: <a href="privasi/">Kebijakan Privasi</a>.</p>
       </details>
       <details>
         <summary>Di mana log kalau ada masalah?</summary>
-        <p>Windows: <code>%LOCALAPPDATA%\com.musa.app\logs\musa.log</code>. macOS: <code>~/Library/Logs/com.musa.app/musa.log</code>. Frontend error ikut diteruskan ke file yang sama.</p>
+        <p>Windows: <code>%LOCALAPPDATA%\com.musa.app\logs\musa.log</code> · macOS: <code>~/Library/Logs/com.musa.app/musa.log</code>.</p>
       </details>
     </section>
   </main>
 
   <footer>
     <div class="wrap foot">
-      <span>Musa · proprietary — all rights reserved · terinspirasi dari <a href="https://rama2555.github.io/nusa/" rel="noopener">Nusa</a></span>
+      <span class="foot-brand"><img src="assets/logo.png" alt="" width="22" height="22" />Musa · proprietary — all rights reserved</span>
       <span><a href="rilis/">Rilis</a> · <a href="privasi/">Privasi</a></span>
     </div>
   </footer>

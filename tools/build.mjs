@@ -215,7 +215,7 @@ ${body}
 function nav(pre) {
   return `  <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="${pre}index.html"><img src="${pre}assets/logo.png" alt="Logo Musa" width="30" height="30" />Musa</a>
+      <a class="brand" href="${pre}index.html"><img src="${pre}assets/logo.png" alt="Logo Musa" width="30" height="30" /><span>Musa</span></a>
       <nav class="nav-links">
         <a href="${pre}index.html#fitur">Fitur</a>
         <a href="${pre}index.html#download">Download</a>
@@ -230,7 +230,7 @@ function nav(pre) {
 function foot(pre) {
   return `  <footer>
     <div class="wrap foot">
-      <span>Musa · proprietary — all rights reserved · terinspirasi dari <a href="https://rama2555.github.io/nusa/" rel="noopener">Nusa</a></span>
+      <span class="foot-brand">Musa · proprietary — all rights reserved</span>
       <span><a href="${pre}index.html">Beranda</a> · <a href="${pre}rilis/">Rilis</a> · <a href="${pre}privasi/">Privasi</a></span>
     </div>
   </footer>`;

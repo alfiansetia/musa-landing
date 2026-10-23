@@ -36,6 +36,8 @@ var FALLBACK_RELEASE = {
 
     var badge = document.getElementById("ver-badge");
     if (badge) badge.textContent = rel.version;
+    var badgeNav = document.getElementById("ver-badge-nav");
+    if (badgeNav) badgeNav.textContent = rel.version;
     var cta = document.getElementById("cta-primary");
     if (cta && rel.files["x64-setup"] !== "#") cta.href = rel.files["x64-setup"];
 
@@ -99,6 +101,36 @@ var FALLBACK_RELEASE = {
       }
     }
   }
+
+  // Tab preview fitur (hanya ada di index.html).
+  (function initTabs() {
+    var list = document.querySelector('[role="tablist"]');
+    if (!list) return;
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    var desc = document.getElementById("feat-desc");
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        var p = document.getElementById(t.getAttribute("aria-controls"));
+        if (p) p.hidden = !on;
+      });
+      if (desc) desc.textContent = tab.getAttribute("data-desc") || "";
+      if (focus) tab.focus();
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { select(tab, false); });
+      tab.addEventListener("keydown", function (e) {
+        var j = null;
+        if (e.key === "ArrowRight") j = (i + 1) % tabs.length;
+        else if (e.key === "ArrowLeft") j = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === "Home") j = 0;
+        else if (e.key === "End") j = tabs.length - 1;
+        if (j !== null && j !== undefined) { e.preventDefault(); select(tabs[j], true); }
+      });
+    });
+  })();
 
   fetch("version.json", { cache: "no-store" })
     .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
