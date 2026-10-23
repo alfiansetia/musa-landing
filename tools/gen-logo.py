@@ -44,8 +44,8 @@ except Exception as e:
     print("font fail", e)
     f_title = f_sub = f_small = ImageFont.load_default()
 draw.text((560, 170), "Musa", font=f_title, fill=(238, 242, 246))
-draw.text((562, 330), "Pill kecil", font=f_sub, fill=(154, 166, 181))
-draw.text((562, 385), "yang tahu diri.", font=f_sub, fill=(154, 166, 181))
+draw.text((562, 330), "Dynamic Island", font=f_sub, fill=(154, 166, 181))
+draw.text((562, 385), "untuk Desktop.", font=f_sub, fill=(154, 166, 181))
 draw.text((562, 465), "Windows \u00b7 macOS ARM \u00b7 Linux", font=f_small, fill=(94, 177, 255))
 # aksen gradasi biru logo -> cyan
 for i in range(158):

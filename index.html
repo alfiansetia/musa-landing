@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Musa — Pill kecil yang tahu diri untuk desktop (Windows, macOS, Linux)</title>
+  <title>Musa — Dynamic Island untuk Desktop (Windows, macOS, Linux)</title>
   <meta name="description" content="Musa adalah pill kecil di atas layar: diam saat tidak dibutuhkan, mengembang saat hover, klik di luar pill tembus ke aplikasi. Untuk Windows 11, macOS ARM, dan Linux. Lokal, ringan, tanpa akun." />
   <link rel="canonical" href="https://musa.kacangan.net/" />
   <meta name="theme-color" content="#07090d" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Musa" />
-  <meta property="og:title" content="Musa — Pill kecil yang tahu diri" />
+  <meta property="og:title" content="Musa — Dynamic Island untuk Desktop" />
   <meta property="og:description" content="Diam saat tidak dibutuhkan, mengembang saat hover. Klik tembus, 100% lokal. Windows 11 · macOS ARM · Ubuntu x64." />
   <meta property="og:url" content="https://musa.kacangan.net/" />
   <meta property="og:image" content="https://musa.kacangan.net/assets/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Musa — Pill kecil yang tahu diri" />
+  <meta name="twitter:title" content="Musa — Dynamic Island untuk Desktop" />
   <meta name="twitter:description" content="Overlay pill: kecil, mengembang saat hover, click-through. Download Windows, macOS ARM, Linux." />
   <meta name="twitter:image" content="https://musa.kacangan.net/assets/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,7 +43,7 @@
 <body>
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="index.html"><img src="assets/logo.png" alt="Logo Musa" width="30" height="30" /><span>Musa</span><code class="ver" id="ver-badge-nav">v1.0.0</code></a>
+      <a class="brand" href="index.html"><img src="assets/logo.png" alt="Logo Musa" width="30" height="30" /><span>Musa</span></a>
       <nav class="nav-links">
         <a href="#fitur">Fitur</a>
         <a href="#os">3 OS</a>
@@ -59,8 +59,8 @@
     <!-- Hero split: copy kiri, desktop mockup kanan -->
     <section class="hero wrap">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="pulse"></span><span id="ver-badge">v1.0.0</span><span class="sep">·</span><span>100% lokal · tanpa akun</span></p>
-        <h1>Pill kecil<br />yang <em>tahu diri.</em></h1>
+        <p class="eyebrow"><span class="pulse"></span><span>Untuk Windows 11 · macOS ARM · Linux</span></p>
+        <h1>Dynamic Island<br />untuk Desktop, <em>yang tahu diri.</em></h1>
         <p class="lede">
           Musa nongkrong di tengah atas layar. Diam saat kamu kerja,
           mengembang saat di-hover — dan klik di luar pill selalu tembus
@@ -119,13 +119,13 @@
       </div>
     </section>
 
-    <!-- Strip OS -->
-    <section class="strip wrap" aria-label="Dukungan OS">
+    <!-- Strip trust -->
+    <section class="strip wrap" aria-label="Privasi">
       <div class="strip-inner mono">
-        <span>Windows 11</span><i>◆</i>
-        <span>macOS ARM</span><i>◆</i>
-        <span>Ubuntu x64</span><i>◆</i>
-        <span class="dim">satu pill, tiga rumah</span>
+        <span>Tanpa akun</span><i>◆</i>
+        <span>Tanpa analytic</span><i>◆</i>
+        <span>Data di perangkatmu</span><i>◆</i>
+        <a href="privasi/">Privasi →</a>
       </div>
     </section>
 
@@ -176,7 +176,7 @@
         <button class="tab" role="tab" id="tab-shelf" aria-controls="panel-shelf" aria-selected="false" tabindex="-1" data-desc="Drag file atau folder ke pill (maks 100, teks/URL 64KB, gambar 10MB), drag keluar ke chat atau email. Clipboard teks opsional, opt-in."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h3l1.5 2h4A1.5 1.5 0 0 1 13.5 7.5v4a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 11.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>shelf</button>
         <button class="tab" role="tab" id="tab-stats" aria-controls="panel-stats" aria-selected="false" tabindex="-1" data-desc="CPU / RAM / baterai / unduh / unggah di pill ciut. Sampling native tiap 2 detik. Slot baterai kosong otomatis di PC tanpa baterai."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2.5 13.5V8M6.5 13.5V5M10.5 13.5V9.5M14.5 13.5V3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>stats</button>
         <button class="tab" role="tab" id="tab-gaya" aria-controls="panel-gaya" aria-selected="false" tabindex="-1" data-desc="Tiga gaya notch — Dynamic, Bulat, Poni — plus mode mata santai saat idle 60 detik. Ukuran compact / regular / large, opasitas 40–100%."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="1.5" y="5.5" width="8" height="5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12.5" cy="8" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>gaya</button>
-        <button class="tab" role="tab" id="tab-mixer" aria-controls="panel-mixer" aria-selected="false" tabindex="-1" data-desc="Mixer volume per aplikasi + spectrum 24-band. Khusus Windows — di OS lain view-nya bilang terus terang tidak tersedia."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 5.5h10M3 8h10M3 10.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="5.5" r="1.6" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="8" r="1.6" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/><circle cx="7.5" cy="10.5" r="1.6" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/></svg>mixer</button>
+        <button class="tab" role="tab" id="tab-mixer" aria-controls="panel-mixer" aria-selected="false" tabindex="-1" data-desc="Mixer volume per aplikasi + spectrum 24-band. Khusus Windows — di OS lain view-nya bilang terus terang tidak tersedia."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 5.5h10M3 8h10M3 10.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="5.5" r="1.6" class="knob" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="8" r="1.6" class="knob" stroke="currentColor" stroke-width="1.5"/><circle cx="7.5" cy="10.5" r="1.6" class="knob" stroke="currentColor" stroke-width="1.5"/></svg>mixer</button>
         <button class="tab" role="tab" id="tab-aksi" aria-controls="panel-aksi" aria-selected="false" tabindex="-1" data-desc="Dua tombol saja: Task Manager dan kunci layar. Keep-awake sesi menahan system sleep, selalu mati tiap launch. Tray: Autohide / Force hide / Force show / Settings / Start at login / Quit."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M9 1.5L3.5 9H8l-1 5.5L12.5 7H8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>aksi</button>
       </div>
 
@@ -226,8 +226,8 @@
 
         <div class="panel" id="panel-stats" role="tabpanel" aria-labelledby="tab-stats" hidden aria-hidden="true">
           <div class="pv-slots">
-            <span class="pv-slot"><svg viewBox="0 0 30 30" width="34" height="34"><circle cx="15" cy="15" r="12" fill="none" stroke="rgba(238,242,246,.15)" stroke-width="3.5"/><circle cx="15" cy="15" r="12" fill="none" stroke="var(--brand)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 75.4" transform="rotate(-90 15 15)"/></svg><span><strong class="mono">8%</strong><span class="mono">CPU</span></span></span>
-            <span class="pv-slot"><svg viewBox="0 0 30 30" width="34" height="34"><circle cx="15" cy="15" r="12" fill="none" stroke="rgba(238,242,246,.15)" stroke-width="3.5"/><circle cx="15" cy="15" r="12" fill="none" stroke="var(--acc2)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="31 75.4" transform="rotate(-90 15 15)"/></svg><span><strong class="mono">41%</strong><span class="mono">RAM</span></span></span>
+            <span class="pv-slot"><svg viewBox="0 0 30 30" width="34" height="34"><circle cx="15" cy="15" r="12" fill="none" stroke="rgba(238,242,246,.15)" stroke-width="3.5"/><circle cx="15" cy="15" r="12" fill="none" class="ring-a" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 75.4" transform="rotate(-90 15 15)"/></svg><span><strong class="mono">8%</strong><span class="mono">CPU</span></span></span>
+            <span class="pv-slot"><svg viewBox="0 0 30 30" width="34" height="34"><circle cx="15" cy="15" r="12" fill="none" stroke="rgba(238,242,246,.15)" stroke-width="3.5"/><circle cx="15" cy="15" r="12" fill="none" class="ring-b" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="31 75.4" transform="rotate(-90 15 15)"/></svg><span><strong class="mono">41%</strong><span class="mono">RAM</span></span></span>
             <span class="pv-slot"><span class="mono pv-net">↓ 1.2 MB/s<br />↑ 240 KB/s</span></span>
           </div>
           <p class="mono pv-sub">sampling native tiap 2 detik</p>
@@ -332,6 +332,11 @@
       <span><a href="rilis/">Rilis</a> · <a href="privasi/">Privasi</a></span>
     </div>
   </footer>
+
+  <button class="to-top" id="to-top" aria-label="Kembali ke atas" tabindex="-1">
+    <svg viewBox="0 0 36 36" width="52" height="52" aria-hidden="true"><circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(238,242,246,.15)" stroke-width="3"/><circle id="to-top-ring" cx="18" cy="18" r="15.5" fill="none" stroke-width="3" stroke-linecap="round" stroke-dasharray="97.4" stroke-dashoffset="97.4" transform="rotate(-90 18 18)"/></svg>
+    <svg class="to-top-arrow" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
 
   <script src="app.js"></script>
 </body>

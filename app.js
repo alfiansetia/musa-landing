@@ -132,6 +132,71 @@ var FALLBACK_RELEASE = {
     });
   })();
 
+  // Tombol kembali ke atas + ring progress + nav ngumpet pas scroll bawah.
+  (function initToTop() {
+    var btn = document.getElementById("to-top");
+    var nav = document.querySelector(".nav");
+    if (!btn) return;
+    var ring = document.getElementById("to-top-ring");
+    var CIRC = 97.4, ticking = false, lastY = 0;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function update() {
+      ticking = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var y = window.scrollY || window.pageYOffset;
+      var show = y > 600;
+      btn.classList.toggle("show", show);
+      btn.tabIndex = show ? 0 : -1;
+      if (ring && max > 0) {
+        var p = Math.min(Math.max(y / max, 0), 1);
+        ring.style.strokeDashoffset = String(CIRC * (1 - p));
+      }
+      if (nav && !reduce) {
+        if (y > 200 && y > lastY + 4) nav.classList.add("nav-hidden");
+        else if (y < lastY - 4 || y <= 200) nav.classList.remove("nav-hidden");
+      }
+      lastY = y;
+    }
+    window.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    btn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    });
+    update();
+  })();
+
+  // Reveal antar section (skip kalau reduced-motion / tanpa IO).
+  (function initReveal() {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var targets = Array.prototype.slice.call(document.querySelectorAll(
+      ".hero-copy > *, .hero-demo, .strip-inner, " +
+      ".section > .kicker, .section > h2, .section > .section-sub, " +
+      ".tabs, .stage, .feat-desc, .term, #dl-cards > *, .os-grid > *, #faq details"
+    ));
+    if (!targets.length) return;
+    var byParent = new Map();
+    targets.forEach(function (el) {
+      el.classList.add("rv");
+      var p = el.parentNode;
+      if (!byParent.has(p)) byParent.set(p, []);
+      byParent.get(p).push(el);
+    });
+    byParent.forEach(function (group) {
+      group.forEach(function (el, i) {
+        el.style.transitionDelay = Math.min(i, 5) * 70 + "ms";
+      });
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        en.target.classList.toggle("in", en.isIntersecting);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    targets.forEach(function (el) { io.observe(el); });
+  })();
+
   fetch("version.json", { cache: "no-store" })
     .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
     .then(function (rel) { boot(rel); applyOS(rel); })
