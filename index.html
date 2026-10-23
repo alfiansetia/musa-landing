@@ -178,6 +178,8 @@
         <button class="tab" role="tab" id="tab-gaya" aria-controls="panel-gaya" aria-selected="false" tabindex="-1" data-desc="Tiga gaya notch — Dynamic, Bulat, Poni — plus mode mata santai saat idle 60 detik. Ukuran compact / regular / large, opasitas 40–100%."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="1.5" y="5.5" width="8" height="5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12.5" cy="8" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>gaya</button>
         <button class="tab" role="tab" id="tab-mixer" aria-controls="panel-mixer" aria-selected="false" tabindex="-1" data-desc="Mixer volume per aplikasi + spectrum 24-band. Khusus Windows — di OS lain view-nya bilang terus terang tidak tersedia."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 5.5h10M3 8h10M3 10.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="5.5" r="1.6" class="knob" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="8" r="1.6" class="knob" stroke="currentColor" stroke-width="1.5"/><circle cx="7.5" cy="10.5" r="1.6" class="knob" stroke="currentColor" stroke-width="1.5"/></svg>mixer</button>
         <button class="tab" role="tab" id="tab-aksi" aria-controls="panel-aksi" aria-selected="false" tabindex="-1" data-desc="Dua tombol saja: Task Manager dan kunci layar. Keep-awake sesi menahan system sleep, selalu mati tiap launch. Tray: Autohide / Force hide / Force show / Settings / Start at login / Quit."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M9 1.5L3.5 9H8l-1 5.5L12.5 7H8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>aksi</button>
+        <button class="tab" role="tab" id="tab-hidrasi" aria-controls="panel-hidrasi" aria-selected="false" tabindex="-1" data-desc="Pengingat minum: target 2000ml (1000–4000), catat +250/+500 per teguk, streak mingguan. Pill nempel ngingetin sampai notch dibuka."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M8 1.8C8 1.8 3.5 7 3.5 10a4.5 4.5 0 0 0 9 0C12.5 7 8 1.8 8 1.8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>hidrasi</button>
+        <button class="tab" role="tab" id="tab-eyebreak" aria-controls="panel-eyebreak" aria-selected="false" tabindex="-1" data-desc="Aturan 20-20-20: tiap 20 menit pill ngingetin lihat sejauh 20 kaki selama 20 detik. Sticky sampai notch dibuka, tanpa notifikasi OS."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M1.5 8S4 3.8 8 3.8 14.5 8 14.5 8 12 12.2 8 12.2 1.5 8 1.5 8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8" cy="8" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>eye-break</button>
       </div>
 
       <div class="stage" aria-live="polite">
@@ -256,6 +258,20 @@
             <span class="pv-act on"><svg viewBox="0 0 16 16" width="14" height="14"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5v1.8M8 12.7v1.8M1.5 8h1.8M12.7 8h1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tahan sleep · sesi ini</span>
           </div>
           <p class="mono pv-sub">tray + <kbd>Ctrl+Shift+M</kbd> sebagai jalur darurat</p>
+        </div>
+
+        <div class="panel" id="panel-hidrasi" role="tabpanel" aria-labelledby="tab-hidrasi" hidden aria-hidden="true">
+          <p class="mono pv-water"><strong>1500</strong> / 2000 ml</p>
+          <span class="pv-seek"><i style="width:75%"></i></span>
+          <div class="pv-presets mono" aria-hidden="true"><span>+250</span><span>+500</span><span class="ghost">reset hari</span></div>
+          <div class="pv-streak" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+          <p class="mono pv-sub">streak 5 hari · diingetin tiap 60 mnt sampai dibuka</p>
+        </div>
+
+        <div class="panel" id="panel-eyebreak" role="tabpanel" aria-labelledby="tab-eyebreak" hidden aria-hidden="true">
+          <p class="mono pv-eye">20-20-20</p>
+          <p class="pv-eyeline">Lihat sejauh 20 kaki, selama 20 detik.</p>
+          <p class="mono pv-sub">tiap 20 mnt · sticky di pill, tanpa notifikasi OS</p>
         </div>
       </div>
       <p class="feat-desc" id="feat-desc">Windows: SMTC penuh — judul, artis, artwork, seek, shuffle, repeat, kecepatan. macOS: Spotify + Music via AppleScript. Tombol yang tidak didukung tampil disabled.</p>

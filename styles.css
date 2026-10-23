@@ -228,6 +228,14 @@ a.is-pending { opacity: 0.45; }
 .pv-mixrow .mono { margin-left: auto; font-size: 12px; color: var(--mist); }
 .pv-vol { flex: 1; height: 5px; border-radius: 999px; background: rgba(238,242,246,0.14); overflow: hidden; }
 .pv-vol i { display: block; height: 100%; background: linear-gradient(90deg, var(--brand), var(--acc2)); border-radius: inherit; }
+/* preview: hidrasi + eye-break */
+.pv-water { text-align: center; font-size: 15px; color: var(--mist); margin: 8px 0 12px; }
+.pv-water strong { font-size: 40px; color: var(--ink); letter-spacing: -0.02em; }
+.pv-streak { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+.pv-streak i { width: 10px; height: 10px; border-radius: 50%; background: rgba(238,242,246,0.15); }
+.pv-streak .on { background: var(--acc2); box-shadow: 0 0 8px rgba(77,227,194,0.6); }
+.pv-eye { text-align: center; font-size: 52px; font-weight: 600; letter-spacing: -0.02em; margin: 8px 0 0; color: var(--ink); }
+.pv-eyeline { text-align: center; color: var(--mist); font-size: 16px; margin: 8px 0 0; }
 /* preview: aksi */
 .pv-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .pv-act { flex: 1 1 150px; display: inline-flex; gap: 9px; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 14px; padding: 14px 10px; font-size: 14px; color: var(--ink); }
