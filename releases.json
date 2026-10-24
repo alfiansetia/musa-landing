@@ -3,7 +3,7 @@
   "releases": [
     {
       "version": "1.0.0",
-      "date": "22 Oktober 2026",
+      "date": "25 Oktober 2026",
       "notes": "Rilis pertama: pill + stats + Now Playing + timer + keep awake + quick actions + tray/hotkey + Settings.",
       "unsigned": true,
       "support": "alfian@kacangan.net",
@@ -16,20 +16,21 @@
         "Jendela Settings + cek pembaruan manual"
       ],
       "files": {
-        "x64-setup": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_x64-setup.exe",
-        "x86-setup": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_x86-setup.exe",
-        "dmg": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_aarch64.dmg",
-        "app-targz": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_aarch64.app.tar.gz",
-        "deb": "https://files.musa.kacangan.net/v1.0.0/musa_1.0.0_amd64.deb",
-        "appimage": "https://files.musa.kacangan.net/v1.0.0/Musa_1.0.0_amd64.AppImage"
+        "x64-setup": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_x64-setup.exe",
+        "x86-setup": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_x86-setup.exe",
+        "dmg": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_aarch64.dmg",
+        "app-targz": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_aarch64.app.tar.gz",
+        "deb": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_amd64.deb",
+        "appimage": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_amd64.AppImage"
       },
+      "github": "https://github.com/alfiansetia/musa-landing/releases/tag/v1.0.0",
       "checksums": {
-        "Musa_1.0.0_x64-setup.exe": "a28c054e935f71dd26852f48f26b362166628939b91400f8f9be792e75e6e35d",
-        "Musa_1.0.0_x86-setup.exe": "2c8488ddf2922aec944862194c782ce3400cb993265e2aa4690cb3faa1822d3f",
-        "Musa_1.0.0_aarch64.dmg": "e05c0cf5b72187a18a225d0072eb96c8799353a2329a7968de3896d0dba0775d",
-        "Musa_1.0.0_aarch64.app.tar.gz": "c1f7938e3cd20c3c30434688eb836281129bb45ee45023d32834fb322baff7e8",
-        "musa_1.0.0_amd64.deb": "742a168ef38a1cbcdd2347225882015a57e6449676519ad4f98ddf97a9344514",
-        "Musa_1.0.0_amd64.AppImage": "32b43bb670fcc26d47f25b8796e67a985d556a526d2bdd5ed2a77ece46a71949"
+        "Musa_1.0.0_x64-setup.exe": "3733722fa62e2498406ffd99fbbec8982d09ae301c3c43b83d3f42e0171d5ca7",
+        "Musa_1.0.0_x86-setup.exe": "a5a61c5a68319ca51018b3038944b13484daac7681c07395cc6b6354fae0f4a2",
+        "Musa_1.0.0_aarch64.dmg": "63725c0d271141634a911a297de104c8788d2f659fe572c57db3be70d2f8d904",
+        "Musa_1.0.0_aarch64.app.tar.gz": "837298bee9d9fb23247e9ae4c81a0aeb3dd118a84571dccccb8322ebacc14591",
+        "Musa_1.0.0_amd64.deb": "27753f98ec04ee7d064fe4a36761004946ad08f209bde0e49ee170a04ec6117c",
+        "Musa_1.0.0_amd64.AppImage": "5e386421e6d3aa38bfe5e1627e37c473c84e3575673143b662676e28a57dc4c9"
       }
     }
   ]

@@ -54,6 +54,7 @@ function loadReleases() {
     changes: Array.isArray(r.changes) ? r.changes : [],
     files: { ...(r.files || {}) },
     checksums: { ...(r.checksums || {}) },
+    github: r.github || "",
   }));
   norm.sort((a, b) => cmpSemver(b.version, a.version)); // terbaru dulu
   return { site, list: norm, rawIsArray: Array.isArray(raw) };
@@ -219,10 +220,12 @@ function nav(pre) {
       <nav class="nav-links">
         <a href="${pre}index.html#fitur">Fitur</a>
         <a href="${pre}index.html#download">Download</a>
+        <a href="${pre}install/">Install</a>
         <a href="${pre}index.html#faq">FAQ</a>
         <a href="${pre}rilis/">Rilis</a>
       </nav>
       <a class="btn btn-small" href="${pre}index.html#download">Download</a>
+      <a class="btn btn-small btn-ghost" href="https://trakteer.id/codewithalfi" target="_blank" rel="noopener">Traktir</a>
     </div>
   </header>`;
 }
@@ -231,7 +234,7 @@ function foot(pre) {
   return `  <footer>
     <div class="wrap foot">
       <span class="foot-brand">Musa · proprietary — all rights reserved</span>
-      <span><a href="${pre}index.html">Beranda</a> · <a href="${pre}rilis/">Rilis</a> · <a href="${pre}privasi/">Privasi</a></span>
+      <span><a href="${pre}index.html">Beranda</a> · <a href="${pre}rilis/">Rilis</a> · <a href="${pre}privasi/">Privasi</a> · <a href="https://trakteer.id/codewithalfi" target="_blank" rel="noopener">Trakteer</a></span>
     </div>
   </footer>`;
 }
@@ -249,6 +252,9 @@ function versionPage(site, release, local, prev, next) {
     const text = s.startsWith("mailto:") ? s.slice(7) : s;
     return `<br />Lapor bug / butuh bantuan: <a href="${esc(href)}">${esc(text)}</a>.`;
   })();
+  const githubLine = release.github
+    ? `<p class="meta">Sumber unduhan + checksum pembanding: <a href="${esc(release.github)}" rel="noopener">GitHub Releases v${esc(v)} →</a></p>\n`
+    : "";
   const unsignedBox = release.unsigned
     ? `    <p class="warn"><strong>Beta test build (unsigned).</strong> Build ini belum ditandatangani dan belum dinotarisasi — peringatan Windows SmartScreen / macOS Gatekeeper itu normal. File aman selama diunduh dari halaman resmi ini. Cocokkan SHA-256 file dengan tabel checksum di bawah.<br />Windows (.exe NSIS): layar biru “Windows protected your PC” → <em>More info</em> → <em>Run anyway</em>.<br />macOS (.dmg/.app): klik kanan app → <em>Open</em> → <em>Open</em>; atau System Settings → Privacy &amp; Security → <em>Open Anyway</em>; alternatif Terminal: <code>xattr -cr /Applications/Musa.app</code>.${supportLine}</p>\n`
     : "";
@@ -276,7 +282,7 @@ ${changes}
 
     <h2>Checksum (SHA-256)</h2>
     ${checksumBlock(release, local)}
-
+${githubLine}
     <p class="meta" style="margin-top:28px">${pager ? pager + " · " : ""}<a href="../">Semua rilis</a></p>
   </main>
 ${foot("../../")}`;
@@ -311,6 +317,7 @@ function archivePage(site, items) {
   <main class="wrap section">
     <h1>Rilis</h1>
     <p class="section-sub">Arsip resmi Musa. Repo kode private, jadi halaman ini + halaman per versi adalah rujukan unduhannya.</p>
+    <p class="meta">Cermin file + checksum pembanding: <a href="https://github.com/alfiansetia/musa-landing/releases/" rel="noopener">GitHub Releases →</a></p>
     <h2>Terbaru: v${esc(latest.version)}</h2>
     <div class="cards" id="dl-cards">
 ${cards}
@@ -419,12 +426,15 @@ writeFileSync(join(ROOT, "version.json"), JSON.stringify({
   notes: latest.release.notes,
   changes: latest.release.changes,
   files: absFiles,
+  // Dipakai halaman install/ untuk link "Lihat di GitHub Releases".
+  github: latest.release.github || "",
 }, null, 2) + "\n");
 
 // sitemap.xml
 const urls = [
   { loc: `${site}/`, freq: "weekly", pri: "1.0" },
   { loc: `${site}/rilis/`, freq: "weekly", pri: "0.8" },
+  { loc: `${site}/install/`, freq: "monthly", pri: "0.7" },
   { loc: `${site}/privasi/`, freq: "yearly", pri: "0.3" },
   ...items.map(({ release }) => ({ loc: `${site}/rilis/v${release.version}/`, freq: "monthly", pri: "0.6" })),
 ];

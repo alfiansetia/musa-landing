@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tutorial Install + FAQ — Musa</title>
+  <meta name="description" content="Cara install Musa v1 (unsigned) di Windows, macOS ARM, dan Linux: verifikasi SHA-256, lewati SmartScreen/Gatekeeper, plus FAQ update dan troubleshooting." />
+  <link rel="canonical" href="https://musa.kacangan.net/install/" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Musa" />
+  <meta property="og:title" content="Tutorial Install + FAQ — Musa" />
+  <meta property="og:description" content="Musa v1 itu unsigned: SmartScreen/Gatekeeper cerewet itu normal. Verifikasi hash, install per-OS, FAQ update & troubleshooting." />
+  <meta property="og:url" content="https://musa.kacangan.net/install/" />
+  <meta property="og:image" content="https://musa.kacangan.net/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tutorial Install + FAQ — Musa" />
+  <meta name="twitter:description" content="Verifikasi hash, lewati SmartScreen/Gatekeeper, install per-OS, FAQ update & troubleshooting." />
+  <meta name="twitter:image" content="https://musa.kacangan.net/assets/og-image.png" />
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Tutorial Install + FAQ — Musa","url":"https://musa.kacangan.net/install/","description":"Cara install Musa v1 (unsigned) di Windows, macOS ARM, dan Linux plus FAQ."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Apakah file Musa berbahaya? Ada peringatan SmartScreen/Gatekeeper.","acceptedAnswer":{"@type":"Answer","text":"Tidak. Musa v1 belum ditandatangani (unsigned) sehingga Windows SmartScreen dan macOS Gatekeeper memberi peringatan. Itu normal untuk build unsigned. Pastikan file diunduh dari halaman resmi ini dan cocokkan hash SHA-256-nya."}},
+    {"@type":"Question","name":"macOS bilang file damaged dan harus di-Trash. Apakah file-nya korup?","acceptedAnswer":{"@type":"Answer","text":"Bukan korup — itu Gatekeeper menolak aplikasi unsigned. Selama hash SHA-256 cocok, file-nya utuh. Perbaiki dengan sudo xattr -rd com.apple.quarantine /Applications/Musa.app atau via Privacy & Security > Open Anyway."}},
+    {"@type":"Question","name":"Apakah perlu install sebagai admin/root?","acceptedAnswer":{"@type":"Answer","text":"Tidak untuk Windows (installer per-user) dan AppImage Linux. Paket .deb butuh sudo apt install. Di macOS, drag ke Applications kadang meminta password admin."}},
+    {"@type":"Question","name":"Apakah ada build untuk Intel Mac, Windows 32-bit, atau distro Linux lain?","acceptedAnswer":{"@type":"Answer","text":"macOS hanya Apple Silicon (ARM M1+), belum ada build Intel. Windows tersedia x64 dan x86 (32-bit). Linux ditargetkan untuk Ubuntu 22.04 x64; distro lain bisa coba AppImage tanpa garansi."}},
+    {"@type":"Question","name":"Bagaimana cara update Musa?","acceptedAnswer":{"@type":"Answer","text":"v1 masih manual: buka Settings > General > Update di aplikasi untuk cek versi terbaru (via feed version.json), unduh installer baru, dan install di atas versi lama. Setting JSON terbawa otomatis."}},
+    {"@type":"Question","name":"Aplikasi tidak terlihat setelah install. Di mana?","acceptedAnswer":{"@type":"Answer","text":"Musa berjalan sebagai ikon tray tanpa jendela utama. Cek tray/system tray, atau tekan Ctrl+Shift+M untuk memunculkan pill. Kalau tetap hilang, cek log: Windows di %LOCALAPPDATA%\\com.musa.app\\logs\\musa.log, macOS di ~/Library/Logs/com.musa.app/musa.log."}}
+  ]}
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="Logo Musa" width="30" height="30" />Musa</a>
+      <nav class="nav-links">
+        <a href="../index.html#fitur">Fitur</a>
+        <a href="../index.html#download">Download</a>
+        <a href="../index.html#faq">FAQ</a>
+        <a href="../rilis/">Rilis</a>
+      </nav>
+      <a class="btn btn-small" href="../index.html#download">Download</a>
+      <a class="btn btn-small btn-ghost" href="https://trakteer.id/codewithalfi" target="_blank" rel="noopener">Traktir</a>
+    </div>
+  </header>
+
+  <main class="wrap section">
+    <p class="meta"><a href="../index.html">Beranda</a> › Install</p>
+    <h1>Tutorial Install + FAQ</h1>
+    <p class="section-sub">Panduan install Musa <strong data-ver>v1</strong> untuk Windows, macOS ARM, dan Linux. Versi dan link file di halaman ini terisi otomatis dari feed <code>version.json</code> — selalu menunjuk ke rilis terbaru.</p>
+
+    <p class="warn"><strong>Musa v1 itu UNSIGNED.</strong> Peringatan SmartScreen (Windows) dan Gatekeeper (macOS) itu normal — bukan file rusak, bukan virus. Kuncinya: unduh dari halaman resmi ini dan cocokkan hash SHA-256 sebelum install (Langkah 0).</p>
+
+    <h2 id="file">1. File per OS</h2>
+    <p class="section-sub">Sumber: GitHub Releases (<a data-github href="https://github.com/alfiansetia/musa-landing/releases/">Lihat semua file →</a>). Setiap target CI ditemani file <code>SHA256SUMS-&lt;target&gt;.txt</code> sebagai pembanding hash.</p>
+    <div style="overflow-x:auto">
+    <table class="table">
+      <thead><tr><th>OS</th><th>File</th><th>Target CI</th><th>SHA-256</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Windows x64</td>
+          <td><a data-asset="x64-setup" href="../rilis/"><span data-filename="x64-setup">memuat…</span></a></td>
+          <td class="mono">x86_64-pc-windows-msvc</td>
+          <td><a data-sha="x86_64-pc-windows-msvc" href="https://github.com/alfiansetia/musa-landing/releases/" class="mono">SHA256SUMS.txt</a></td>
+        </tr>
+        <tr>
+          <td>Windows x86</td>
+          <td><a data-asset="x86-setup" href="../rilis/"><span data-filename="x86-setup">memuat…</span></a></td>
+          <td class="mono">i686-pc-windows-msvc</td>
+          <td><a data-sha="i686-pc-windows-msvc" href="https://github.com/alfiansetia/musa-landing/releases/" class="mono">SHA256SUMS.txt</a></td>
+        </tr>
+        <tr>
+          <td>macOS ARM</td>
+          <td><a data-asset="dmg" href="../rilis/"><span data-filename="dmg">memuat…</span></a></td>
+          <td class="mono">aarch64-apple-darwin</td>
+          <td><a data-sha="aarch64-apple-darwin" href="https://github.com/alfiansetia/musa-landing/releases/" class="mono">SHA256SUMS.txt</a></td>
+        </tr>
+        <tr>
+          <td>macOS ARM</td>
+          <td><a data-asset="app-targz" href="../rilis/"><span data-filename="app-targz">memuat…</span></a></td>
+          <td class="mono">aarch64-apple-darwin</td>
+          <td><a data-sha="aarch64-apple-darwin" href="https://github.com/alfiansetia/musa-landing/releases/" class="mono">SHA256SUMS.txt</a></td>
+        </tr>
+        <tr>
+          <td>Linux x64</td>
+          <td><a data-asset="deb" href="../rilis/"><span data-filename="deb">memuat…</span></a></td>
+          <td class="mono">x86_64-unknown-linux-gnu</td>
+          <td><a data-sha="x86_64-unknown-linux-gnu" href="https://github.com/alfiansetia/musa-landing/releases/" class="mono">SHA256SUMS.txt</a></td>
+        </tr>
+        <tr>
+          <td>Linux x64</td>
+          <td><a data-asset="appimage" href="../rilis/"><span data-filename="appimage">memuat…</span></a></td>
+          <td class="mono">x86_64-unknown-linux-gnu</td>
+          <td><a data-sha="x86_64-unknown-linux-gnu" href="https://github.com/alfiansetia/musa-landing/releases/" class="mono">SHA256SUMS.txt</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="meta">macOS hanya untuk Apple Silicon (M1+) — <strong>belum ada build Intel</strong>. Linux ditargetkan untuk Ubuntu 22.04 x64. Tabel checksum lengkap juga ada di <a href="../rilis/">halaman rilis</a>.</p>
+
+    <h2 id="verifikasi">2. Langkah 0 — verifikasi hash</h2>
+    <p class="section-sub">Ganti <code>NAMA_FILE</code> dengan nama file yang kamu unduh (lihat tabel di atas), lalu bandingkan hasilnya dengan isi <code>SHA256SUMS-&lt;target&gt;.txt</code> atau tabel checksum di <a href="../rilis/">halaman rilis</a>. Cocok = file utuh dan asli.</p>
+    <p class="meta mono">Windows (PowerShell)</p>
+    <pre class="code">certutil -hashfile NAMA_FILE.exe SHA256</pre>
+    <p class="meta mono">macOS (Terminal)</p>
+    <pre class="code">shasum -a 256 NAMA_FILE.dmg</pre>
+    <p class="meta mono">Linux (Terminal)</p>
+    <pre class="code">sha256sum NAMA_FILE.deb
+# atau: sha256sum NAMA_FILE.AppImage</pre>
+
+    <h2 id="windows">3. Windows</h2>
+    <ul class="notes-list">
+      <li><strong>WebView2</strong> sudah bawaan Windows 11 — tidak perlu install tambahan.</li>
+      <li>Installer <strong>per-user, tanpa admin</strong>. Jalankan <code>.exe</code> seperti biasa, pilih folder install, selesai.</li>
+      <li><strong>SmartScreen:</strong> layar biru &ldquo;Windows protected your PC&rdquo; → <em>More info</em> → <em>Run anyway</em>. Itu normal untuk build unsigned.</li>
+      <li><strong>Uninstall:</strong> Settings → Apps → Installed apps → Musa → Uninstall.</li>
+    </ul>
+
+    <h2 id="macos">4. macOS (Apple Silicon)</h2>
+    <ul class="notes-list">
+      <li>Buka <code>.dmg</code>, <strong>drag Musa ke Applications</strong>. <strong>Jangan</strong> dijalankan langsung dari dalam DMG — eject DMG setelah selesai.</li>
+      <li>Buka pertama: <strong>klik kanan app → Open → Open</strong> (sekali saja, selanjutnya normal).</li>
+      <li>Error <em>&ldquo;Musa is damaged and can&rsquo;t be opened. You should move it to the Trash&rdquo;</em> = <strong>Gatekeeper menolak app unsigned, bukan file korup</strong>. Fix via Terminal:<br /><code>sudo xattr -rd com.apple.quarantine /Applications/Musa.app</code></li>
+      <li>Alternatif tanpa Terminal: System Settings → Privacy &amp; Security → <em>Open Anyway</em>.</li>
+      <li><strong>Ciri normal:</strong> tanpa ikon Dock, hanya ikon tray hitam-putih. Kalau tidak ada jendela setelah dibuka, itu memang maunya begitu — cek tray atau tekan <kbd>Ctrl+Shift+M</kbd>.</li>
+    </ul>
+
+    <h2 id="linux">5. Linux (Ubuntu 22.04 x64)</h2>
+    <ul class="notes-list">
+      <li>Pilih salah satu — install <code>.deb</code>:<br /><code>sudo apt install ./musa_*_amd64.deb</code><br />atau portable AppImage:<br /><code>chmod +x Musa_*.AppImage &amp;&amp; ./Musa_*.AppImage</code></li>
+      <li><strong>Batasan v1:</strong> Now Playing, Mixer volume, quick actions, dan keep-awake masih <strong>stub</strong> — UI-nya hide/disable, bukan bug.</li>
+      <li><strong>X11 disarankan.</strong> Wayland belum tentu jalan penuh — wajib smoke-test di mesin nyata: cek ikon tray muncul, pill tampil di tepi atas, dan klik-tembus bekerja.</li>
+    </ul>
+
+    <h2 id="faq">6. FAQ</h2>
+    <details open>
+      <summary>Apakah file-nya berbahaya? Kok ada peringatan?</summary>
+      <p>Tidak. Peringatan muncul karena Musa v1 <strong>unsigned</strong> (belum ditandatangani + belum dinotarisasi), jadi SmartScreen/Gatekeeper tidak mengenali reputasinya. Selama file dari halaman resmi ini dan hash SHA-256 cocok (Langkah 0), file aman.</p>
+    </details>
+    <details>
+      <summary>macOS bilang &ldquo;damaged&rdquo; dan suruh Trash. File-nya korup?</summary>
+      <p>Bukan korup — itu pesan Gatekeeper untuk app unsigned. Kalau hash SHA-256 cocok, file utuh. Fix: <code>sudo xattr -rd com.apple.quarantine /Applications/Musa.app</code>, atau System Settings → Privacy &amp; Security → <em>Open Anyway</em>.</p>
+    </details>
+    <details>
+      <summary>Apakah bisa build sendiri dari source?</summary>
+      <p>Tidak — Musa itu <strong>closed source</strong> (proprietary), tidak ada source publik. Satu-satunya cara resmi adalah binary dari halaman ini / GitHub Releases, lalu verifikasi hash-nya (Langkah 0).</p>
+    </details>
+    <details>
+      <summary>Perlu admin / root?</summary>
+      <p>Windows tidak (per-user). macOS umumnya tidak, kadang butuh password admin saat copy ke Applications. Linux: <code>.deb</code> butuh <code>sudo</code>, AppImage tidak.</p>
+    </details>
+    <details>
+      <summary>Ada build Intel Mac / 32-bit / distro lain?</summary>
+      <p>macOS: <strong>ARM M1+ saja, belum ada build Intel</strong>. Windows: tersedia x64 dan x86 (32-bit). Linux: target Ubuntu 22.04 x64 — distro lain silakan coba AppImage, tanpa garansi.</p>
+    </details>
+    <details>
+      <summary>Bagaimana cara update?</summary>
+      <p>v1 masih <strong>manual</strong>: buka Settings → General → Update di aplikasi untuk cek versi terbaru (mengambil feed <code>version.json</code>). Unduh installer baru dan install di atas versi lama — setting JSON terbawa otomatis.</p>
+    </details>
+    <details>
+      <summary>App tidak terlihat setelah install. Ke mana?</summary>
+      <p>Musa hidup di <strong>tray</strong> tanpa jendela utama. Cek ikon tray, atau tekan <kbd>Ctrl+Shift+M</kbd> sebagai jalur darurat. Kalau tetap hilang, cek log — Windows: <code>%LOCALAPPDATA%\com.musa.app\logs\musa.log</code> · macOS: <code>~/Library/Logs/com.musa.app/musa.log</code>.</p>
+    </details>
+    <details>
+      <summary>Apakah Start at login nyala sendiri?</summary>
+      <p>Tidak — <strong>default mati</strong>. Nyalakan manual dari Settings atau menu tray kalau mau Musa jalan tiap boot.</p>
+    </details>
+
+    <p class="meta" style="margin-top:28px"><a href="../index.html">← Beranda</a> · <a href="../rilis/">Halaman rilis + checksum</a> · <a data-github href="https://github.com/alfiansetia/musa-landing/releases/">GitHub Releases →</a></p>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span class="foot-brand"><img src="../assets/logo.png" alt="" width="22" height="22" />Musa · proprietary — all rights reserved</span>
+      <span><a href="../index.html">Beranda</a> · <a href="../rilis/">Rilis</a> · <a href="../privasi/">Privasi</a> · <a href="https://trakteer.id/codewithalfi" target="_blank" rel="noopener">Trakteer</a></span>
+    </div>
+  </footer>
+
+  <script>
+  // Isi versi + URL file dinamis dari ../version.json (feed rilis terbaru).
+  // Tanpa JS (atau fetch gagal, mis. preview file://): link default mengarah
+  // ke ../rilis/ dan halaman GitHub Releases — tidak ada link mati.
+  (function () {
+    function basename(url) {
+      try { return decodeURIComponent(url.split("?")[0].split("/").pop()) || ""; }
+      catch (e) { return ""; }
+    }
+    function fill(rel) {
+      if (!rel || !rel.version) return;
+      document.querySelectorAll("[data-ver]").forEach(function (el) {
+        el.textContent = "v" + rel.version;
+      });
+      var files = rel.files || {};
+      document.querySelectorAll("[data-asset]").forEach(function (el) {
+        var url = files[el.getAttribute("data-asset")];
+        if (url && url !== "#") {
+          el.href = url;
+          var name = document.querySelector('[data-filename="' + el.getAttribute("data-asset") + '"]');
+          if (name) name.textContent = basename(url);
+        } else {
+          el.href = "../rilis/";
+        }
+      });
+      var base = "";
+      Object.keys(files).forEach(function (k) {
+        var u = files[k];
+        if (u && u !== "#" && !base) base = u.slice(0, u.lastIndexOf("/") + 1);
+      });
+      document.querySelectorAll("[data-sha]").forEach(function (el) {
+        var t = el.getAttribute("data-sha");
+        el.textContent = "SHA256SUMS-" + t + ".txt";
+        el.href = base ? base + "SHA256SUMS-" + t + ".txt"
+          : "https://github.com/alfiansetia/musa-landing/releases/";
+      });
+      if (rel.github) {
+        document.querySelectorAll("[data-github]").forEach(function (el) { el.href = rel.github; });
+      }
+    }
+    fetch("../version.json", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+      .then(fill)
+      .catch(function () {
+        document.querySelectorAll("[data-filename]").forEach(function (el) {
+          el.textContent = "lihat halaman rilis";
+        });
+      });
+  })();
+  </script>
+</body>
+</html>

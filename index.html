@@ -48,10 +48,12 @@
         <a href="#fitur">Fitur</a>
         <a href="#os">3 OS</a>
         <a href="#download">Download</a>
+        <a href="install/">Install</a>
         <a href="#faq">FAQ</a>
         <a href="rilis/">Rilis</a>
       </nav>
       <a class="btn btn-small" href="#download">Download</a>
+      <a class="btn btn-small btn-ghost" href="https://trakteer.id/codewithalfi" target="_blank" rel="noopener">Traktir</a>
     </div>
   </header>
 
@@ -68,7 +70,7 @@
         </p>
         <div class="cta-row">
           <a class="btn" id="cta-primary" href="#download">Download untuk Windows</a>
-          <a class="btn btn-ghost" href="rilis/">Catatan rilis</a>
+          <a class="btn btn-ghost" href="https://trakteer.id/codewithalfi" target="_blank" rel="noopener">Traktir via Trakteer</a>
         </div>
         <p class="meta mono" id="os-hint"></p>
         <div class="chips" aria-label="Ringkas spesifikasi">
@@ -144,23 +146,31 @@
           <h3>Windows</h3>
           <p class="os">Windows 11 · x64 / x86 · NSIS per-user</p>
           <a class="btn btn-small" data-asset="x64-setup" href="#">Musa x64-setup.exe</a>
-          <a class="link" data-asset="x86-setup" href="#">versi x86</a>
+          <a class="link" data-asset="x86-setup" href="#">versi x86</a><br />
+          <a class="link" href="install/#windows">Cara install Windows →</a>
         </article>
         <article class="card dl" data-os-card="macos">
           <p class="mono card-no">MAC</p>
           <h3>macOS</h3>
           <p class="os">Apple Silicon · .app + DMG · tanpa Dock icon</p>
           <a class="btn btn-small" data-asset="dmg" href="#">Musa .dmg</a>
-          <a class="link" data-asset="app-targz" href="#">.app.tar.gz</a>
+          <a class="link" data-asset="app-targz" href="#">.app.tar.gz</a><br />
+          <a class="link" href="install/#macos">Cara install macOS →</a>
         </article>
         <article class="card dl" data-os-card="linux">
           <p class="mono card-no">NIX</p>
           <h3>Linux</h3>
           <p class="os">Ubuntu x64 · .deb / AppImage · X11 disarankan</p>
           <a class="btn btn-small" data-asset="deb" href="#">Musa .deb</a>
-          <a class="link" data-asset="appimage" href="#">AppImage</a>
+          <a class="link" data-asset="appimage" href="#">AppImage</a><br />
+          <a class="link" href="install/#linux">Cara install Linux →</a>
         </article>
       </div>
+      <p class="warn"><strong>Build unsigned — peringatan SmartScreen / Gatekeeper itu normal, bukan virus.</strong><br />
+      Windows: layar biru &ldquo;Windows protected your PC&rdquo; &rarr; <em>More info</em> &rarr; <em>Run anyway</em>.<br />
+      macOS: klik kanan app &rarr; <em>Open</em> &rarr; <em>Open</em> (atau <em>Open Anyway</em> di Privacy &amp; Security).<br />
+      Linux: <code>chmod +x *.AppImage</code> sebelum dijalankan, atau install <code>.deb</code> via <code>apt</code>.<br />
+      Pastikan file dari halaman ini dan cocokkan SHA-256 di <a href="rilis/">halaman rilis &rarr;</a></p>
       <p class="meta mono" id="dl-meta">Terbaru: v1.0.0</p>
     </section>
 
@@ -345,7 +355,7 @@
   <footer>
     <div class="wrap foot">
       <span class="foot-brand"><img src="assets/logo.png" alt="" width="22" height="22" />Musa · proprietary — all rights reserved</span>
-      <span><a href="rilis/">Rilis</a> · <a href="privasi/">Privasi</a></span>
+      <span><a href="rilis/">Rilis</a> · <a href="privasi/">Privasi</a> · <a href="https://trakteer.id/codewithalfi" target="_blank" rel="noopener">Trakteer</a></span>
     </div>
   </footer>
 
