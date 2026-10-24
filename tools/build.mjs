@@ -225,7 +225,7 @@ function nav(pre) {
         <a href="${pre}rilis/">Rilis</a>
       </nav>
       <a class="btn btn-small" href="${pre}index.html#download">Download</a>
-      <a class="btn btn-small btn-ghost" href="https://trakteer.id/codewithalfi" target="_blank" rel="noopener">Traktir</a>
+      <a class="btn btn-small btn-ghost" href="${pre}traktir/">Traktir</a>
     </div>
   </header>`;
 }
@@ -234,7 +234,7 @@ function foot(pre) {
   return `  <footer>
     <div class="wrap foot">
       <span class="foot-brand">Musa · proprietary — all rights reserved</span>
-      <span><a href="${pre}index.html">Beranda</a> · <a href="${pre}rilis/">Rilis</a> · <a href="${pre}privasi/">Privasi</a> · <a href="https://trakteer.id/codewithalfi" target="_blank" rel="noopener">Trakteer</a></span>
+      <span><a href="${pre}index.html">Beranda</a> · <a href="${pre}rilis/">Rilis</a> · <a href="${pre}privasi/">Privasi</a> · <a href="${pre}traktir/">Traktir</a></span>
     </div>
   </footer>`;
 }
@@ -435,6 +435,7 @@ const urls = [
   { loc: `${site}/`, freq: "weekly", pri: "1.0" },
   { loc: `${site}/rilis/`, freq: "weekly", pri: "0.8" },
   { loc: `${site}/install/`, freq: "monthly", pri: "0.7" },
+  { loc: `${site}/traktir/`, freq: "monthly", pri: "0.5" },
   { loc: `${site}/privasi/`, freq: "yearly", pri: "0.3" },
   ...items.map(({ release }) => ({ loc: `${site}/rilis/v${release.version}/`, freq: "monthly", pri: "0.6" })),
 ];

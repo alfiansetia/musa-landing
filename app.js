@@ -70,6 +70,24 @@ var FALLBACK_RELEASE = {
     return "unknown";
   }
 
+  // Total unduhan (diisi initDlTotal di bawah) ditempel ke baris os-hint
+  // + dl-meta. Dipanggil dari applyOS dan dari render() — siapa pun yang
+  // datang belakangan tetap nempel tepat sekali.
+  var dlTotalTxt = "";
+  var dlTotalExact = "";
+  function appendDlTotal() {
+    if (!dlTotalTxt) return;
+    var hint = document.getElementById("os-hint");
+    if (hint && hint.textContent && hint.textContent.indexOf("unduhan") === -1) {
+      hint.textContent += dlTotalTxt;
+      hint.title = dlTotalExact;
+    }
+    var meta = document.getElementById("dl-meta");
+    if (meta && meta.textContent.indexOf("unduhan") === -1) {
+      meta.textContent += dlTotalTxt;
+    }
+  }
+
   function applyOS(rel) {
     var OS_LABEL = { windows: "Windows", macos: "macOS", linux: "Linux" };
     var OS_ASSET = { windows: "x64-setup", macos: "dmg", linux: "deb" };
@@ -86,11 +104,6 @@ var FALLBACK_RELEASE = {
         cta.textContent = "Download untuk " + OS_LABEL[os];
         cta.href = url && url !== "#" ? url : "#download";
       }
-      if (hint) {
-        hint.textContent = url && url !== "#"
-          ? "Terdeteksi: " + OS_LABEL[os] + " — tombol di atas langsung ke file yang cocok."
-          : "Terdeteksi: " + OS_LABEL[os] + " — scroll ke bawah, kartu " + OS_LABEL[os] + " sudah ditandai.";
-      }
       var card = document.querySelector('[data-os-card="' + os + '"]');
       if (card) {
         card.classList.add("is-recommended");
@@ -100,6 +113,7 @@ var FALLBACK_RELEASE = {
         card.insertBefore(badge, card.firstChild);
       }
     }
+    appendDlTotal();
   }
 
   // Tab preview fitur (hanya ada di index.html).
@@ -195,6 +209,52 @@ var FALLBACK_RELEASE = {
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
     targets.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Total unduhan app = jumlah download_count semua aset GitHub Releases
+  // (di luar file SHA256SUMS*.txt). Cache 6 jam, gagal diam-diam.
+  (function initDlTotal() {
+    var REPO = "alfiansetia/musa-landing";
+    var KEY = "musa-dl-total";
+    var TTL = 6 * 3600 * 1000;
+    function fmt1(x) {
+      return (Math.round(x * 10) / 10).toString().replace(".", ",").replace(/,0$/, "");
+    }
+    function fmt(n) {
+      if (n >= 1e6) return fmt1(n / 1e6) + " jt";
+      if (n >= 1e3) return fmt1(n / 1e3) + " rb";
+      return String(n);
+    }
+    function render(n) {
+      dlTotalTxt = " · " + fmt(n) + " total unduhan";
+      dlTotalExact = n.toLocaleString("id-ID") + " total unduhan";
+      document.querySelectorAll("[data-dl-total]").forEach(function (el) {
+        el.textContent = fmt(n);
+        var chip = el.closest(".chip");
+        if (chip) chip.title = dlTotalExact;
+      });
+      appendDlTotal();
+    }
+    try {
+      var c = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (c && Date.now() - c.t < TTL && typeof c.n === "number") { render(c.n); return; }
+    } catch (e) { /* abaikan cache rusak */ }
+    fetch("https://api.github.com/repos/" + REPO + "/releases?per_page=100", {
+      headers: { Accept: "application/vnd.github+json" }
+    })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+      .then(function (rs) {
+        var n = 0;
+        (Array.isArray(rs) ? rs : []).forEach(function (rel) {
+          (rel.assets || []).forEach(function (a) {
+            if (/^SHA256SUMS/i.test(a.name || "")) return;
+            n += a.download_count || 0;
+          });
+        });
+        try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), n: n })); } catch (e) { /* abaikan */ }
+        render(n);
+      })
+      .catch(function () { /* biarkan polos */ });
   })();
 
   fetch("version.json", { cache: "no-store" })
