@@ -9,12 +9,20 @@ RUN if [ -n "$SITE_URL" ]; then node tools/build.mjs --base "$SITE_URL"; else no
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /site /usr/share/nginx/html
-# Jangan serve file internal (workflow build, bukan konten situs)
+# Jangan serve file internal (workflow build, bukan konten situs).
+# Daftar ini lapis kedua — lapis pertama ada di nginx.conf (return 404
+# untuk dotfiles & nama sensitif), jadi kalaupun ada yang lolos di sini
+# tetap tidak bisa diunduh via HTTP.
 RUN rm -rf /usr/share/nginx/html/tools \
            /usr/share/nginx/html/releases.json \
            /usr/share/nginx/html/Dockerfile \
            /usr/share/nginx/html/docker-compose.yml \
            /usr/share/nginx/html/.dockerignore \
            /usr/share/nginx/html/.gitignore \
-           /usr/share/nginx/html/.git
+           /usr/share/nginx/html/.git \
+           /usr/share/nginx/html/.env \
+           /usr/share/nginx/html/.env.example \
+           /usr/share/nginx/html/.env.* \
+           /usr/share/nginx/html/nginx.conf \
+           /usr/share/nginx/html/README.md
 EXPOSE 80
