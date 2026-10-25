@@ -5,10 +5,10 @@
 // FALLBACK di bawah hanya untuk preview file:// (fetch gagal) —
 // sinkronkan manual dengan version.json saat rilis.
 var FALLBACK_RELEASE = {
-  version: "v1.0.0",
-  date: "22 Oktober 2026",
-  page: "https://musa.kacangan.net/release.html",
-  notes: "Rilis pertama: pill + stats + Now Playing + timer + keep awake + quick actions + tray/hotkey + Settings.",
+  version: "v1.1.0",
+  date: "25 Oktober 2026",
+  page: "https://musa.kacangan.net/rilis/v1.1.0/",
+  notes: "Musa v1.1.0 — Weather, Calendar & Prayer tabs.",
   files: {
     "x64-setup": "#",
     "x86-setup": "#",

@@ -2,6 +2,31 @@
   "site": "https://musa.kacangan.net",
   "releases": [
     {
+      "version": "1.1.0",
+      "date": "25 Oktober 2026",
+      "notes": "Musa v1.1.0 — Weather, Calendar & Prayer tabs.",
+      "unsigned": true,
+      "support": "alfian@kacangan.net",
+      "changes": [
+        "Tab Weather: prakiraan Open-Meteo, 84 kota + lokasi custom",
+        "Tab Calendar: month grid + drill-in agenda",
+        "Tab Prayer: jadwal Kemenag, tanggal Hijri, arah kiblat, reminder + iqamah + chime (opt-in)",
+        "Slot pill cuaca/sholat",
+        "Pengaturan Tabs + urutan carousel",
+        "Dots morph jadi icon chips"
+      ],
+      "files": {
+        "x64-setup": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_x64-setup.exe",
+        "x86-setup": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_x86-setup.exe",
+        "dmg": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_aarch64.dmg",
+        "app-targz": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_aarch64.app.tar.gz",
+        "deb": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_amd64.deb",
+        "appimage": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_amd64.AppImage"
+      },
+      "github": "https://github.com/alfiansetia/musa-landing/releases/tag/v1.1.0",
+      "checksums": {}
+    },
+    {
       "version": "1.0.0",
       "date": "25 Oktober 2026",
       "notes": "Rilis pertama: pill + stats + Now Playing + timer + keep awake + quick actions + tray/hotkey + Settings.",

@@ -1,23 +1,23 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "25 Oktober 2026",
-  "page": "https://musa.kacangan.net/rilis/v1.0.0/",
-  "notes": "Rilis pertama: pill + stats + Now Playing + timer + keep awake + quick actions + tray/hotkey + Settings.",
+  "page": "https://musa.kacangan.net/rilis/v1.1.0/",
+  "notes": "Musa v1.1.0 — Weather, Calendar & Prayer tabs.",
   "changes": [
-    "Overlay pill ala Dynamic Island: hover mengembang, klik di luar pill tembus",
-    "Statistik CPU / RAM / baterai live tiap 2 detik",
-    "Now Playing via SMTC (Windows): artwork, transport, seek, shuffle, repeat",
-    "Countdown timer + stopwatch, deadline aman dari collapse",
-    "Keep-awake sesi, quick actions, tray + hotkey Ctrl+Shift+M",
-    "Jendela Settings + cek pembaruan manual"
+    "Tab Weather: prakiraan Open-Meteo, 84 kota + lokasi custom",
+    "Tab Calendar: month grid + drill-in agenda",
+    "Tab Prayer: jadwal Kemenag, tanggal Hijri, arah kiblat, reminder + iqamah + chime (opt-in)",
+    "Slot pill cuaca/sholat",
+    "Pengaturan Tabs + urutan carousel",
+    "Dots morph jadi icon chips"
   ],
   "files": {
-    "x64-setup": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_x64-setup.exe",
-    "x86-setup": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_x86-setup.exe",
-    "dmg": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_aarch64.dmg",
-    "app-targz": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_aarch64.app.tar.gz",
-    "deb": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_amd64.deb",
-    "appimage": "https://github.com/alfiansetia/musa-landing/releases/download/v1.0.0/Musa_1.0.0_amd64.AppImage"
+    "x64-setup": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_x64-setup.exe",
+    "x86-setup": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_x86-setup.exe",
+    "dmg": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_aarch64.dmg",
+    "app-targz": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_aarch64.app.tar.gz",
+    "deb": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_amd64.deb",
+    "appimage": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_amd64.AppImage"
   },
-  "github": "https://github.com/alfiansetia/musa-landing/releases/tag/v1.0.0"
+  "github": "https://github.com/alfiansetia/musa-landing/releases/tag/v1.1.0"
 }
