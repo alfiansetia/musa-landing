@@ -191,6 +191,9 @@
         <button class="tab" role="tab" id="tab-aksi" aria-controls="panel-aksi" aria-selected="false" tabindex="-1" data-desc="Dua tombol saja: Task Manager dan kunci layar. Keep-awake sesi menahan system sleep, selalu mati tiap launch. Tray: Autohide / Force hide / Force show / Settings / Start at login / Quit."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M9 1.5L3.5 9H8l-1 5.5L12.5 7H8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>aksi</button>
         <button class="tab" role="tab" id="tab-hidrasi" aria-controls="panel-hidrasi" aria-selected="false" tabindex="-1" data-desc="Pengingat minum: target 2000ml (1000–4000), catat +250/+500 per teguk, streak mingguan. Pill nempel ngingetin sampai notch dibuka."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M8 1.8C8 1.8 3.5 7 3.5 10a4.5 4.5 0 0 0 9 0C12.5 7 8 1.8 8 1.8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>hidrasi</button>
         <button class="tab" role="tab" id="tab-eyebreak" aria-controls="panel-eyebreak" aria-selected="false" tabindex="-1" data-desc="Aturan 20-20-20: tiap 20 menit pill ngingetin lihat sejauh 20 kaki selama 20 detik. Sticky sampai notch dibuka, tanpa notifikasi OS."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M1.5 8S4 3.8 8 3.8 14.5 8 14.5 8 12 12.2 8 12.2 1.5 8 1.5 8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8" cy="8" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>eye-break</button>
+        <button class="tab" role="tab" id="tab-cuaca" aria-controls="panel-cuaca" aria-selected="false" tabindex="-1" data-desc="Prakiraan Open-Meteo: 84 kota + lokasi custom. Slot cuaca nempel di pill ciut, detail per jam saat dibuka."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="6" cy="6" r="3.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 1.5v1.4M1.5 6h1.4M2.8 2.8l1 1M9.2 2.8l-1 1M3.5 13.5h8a2.5 2.5 0 0 0 .4-4.96A3.5 3.5 0 0 0 5 9.3 2.2 2.2 0 0 0 3.5 13.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>cuaca</button>
+        <button class="tab" role="tab" id="tab-kalender" aria-controls="panel-kalender" aria-selected="false" tabindex="-1" data-desc="Month grid + drill-in agenda per hari. Navigasi bulan, dot penanda hari berisi agenda."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 6.5h12M5.5 1.5V4M10.5 1.5V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="9.5" r="1.2" fill="currentColor"/><circle cx="10" cy="9.5" r="1.2" fill="currentColor" opacity=".4"/></svg>kalender</button>
+        <button class="tab" role="tab" id="tab-sholat" aria-controls="panel-sholat" aria-selected="false" tabindex="-1" data-desc="Jadwal Kemenag + tanggal Hijri + arah kiblat. Reminder, suara iqamah & chime — semua opt-in. Countdown sholat berikut di pill."><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M8 13.5A5.5 5.5 0 1 1 13.5 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M13.5 1.5v3h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>sholat</button>
       </div>
 
       <div class="stage" aria-live="polite">
@@ -283,6 +286,27 @@
           <p class="mono pv-eye">20-20-20</p>
           <p class="pv-eyeline">Lihat sejauh 20 kaki, selama 20 detik.</p>
           <p class="mono pv-sub">tiap 20 mnt · sticky di pill, tanpa notifikasi OS</p>
+        </div>
+
+        <div class="panel" id="panel-cuaca" role="tabpanel" aria-labelledby="tab-cuaca" hidden aria-hidden="true">
+          <p class="mono pv-timer">28°</p>
+          <p class="pv-eyeline">Jakarta · cerah berawan</p>
+          <div class="pv-presets mono" aria-hidden="true"><span class="on">13:00 29°</span><span>14:00 30°</span><span>15:00 29°</span><span>16:00 28°</span></div>
+          <p class="mono pv-sub">Open-Meteo · 84 kota + lokasi custom · slot cuaca di pill</p>
+        </div>
+
+        <div class="panel" id="panel-kalender" role="tabpanel" aria-labelledby="tab-kalender" hidden aria-hidden="true">
+          <p class="mono pv-eye">Oktober 2026</p>
+          <div class="pv-presets mono" aria-hidden="true"><span>S</span><span>S</span><span>R</span><span class="on">K 25</span><span>J</span><span>S</span><span>M</span></div>
+          <p class="pv-eyeline">3 agenda hari ini — klik tanggal untuk drill-in.</p>
+          <p class="mono pv-sub">month grid · dot penanda hari berisi agenda</p>
+        </div>
+
+        <div class="panel" id="panel-sholat" role="tabpanel" aria-labelledby="tab-sholat" hidden aria-hidden="true">
+          <p class="mono pv-timer">Magrib 17:52</p>
+          <p class="pv-eyeline">8 Zulkaidah 1447 · kiblat 295°</p>
+          <div class="pv-presets mono" aria-hidden="true"><span>Subuh 04:12</span><span>Zuhur 11:38</span><span class="on">Magrib 17:52</span><span>Isya 19:05</span></div>
+          <p class="mono pv-sub">jadwal Kemenag · reminder + iqamah + chime (opt-in)</p>
         </div>
       </div>
       <p class="feat-desc" id="feat-desc">Windows: SMTC penuh — judul, artis, artwork, seek, shuffle, repeat, kecepatan. macOS: Spotify + Music via AppleScript. Tombol yang tidak didukung tampil disabled.</p>
