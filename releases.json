@@ -24,7 +24,14 @@
         "appimage": "https://github.com/alfiansetia/musa-landing/releases/download/v1.1.0/Musa_1.1.0_amd64.AppImage"
       },
       "github": "https://github.com/alfiansetia/musa-landing/releases/tag/v1.1.0",
-      "checksums": {}
+      "checksums": {
+        "Musa_1.1.0_x64-setup.exe": "851a5951ca0429e55dcb415d3f5fa12dcd9986a3fe53d32760332eab7252c852",
+        "Musa_1.1.0_x86-setup.exe": "81061fae1856574034d50d57f4f83115cf4c36add4834ca0897b87d9a76671bb",
+        "Musa_1.1.0_aarch64.dmg": "ba30c8c00414030da3d3b5bb31d49eb903a8f08758da17e5fae2df0ab6f69ed2",
+        "Musa_1.1.0_aarch64.app.tar.gz": "1acc61e5995b9f656cfbdb06d7ae237c70ea967d75a9fcd290c78ccd13b5b9b3",
+        "Musa_1.1.0_amd64.deb": "bc21d423fa5e43eed811f462db01adf5dc5d8efccc2aefda9f4823f55219f866",
+        "Musa_1.1.0_amd64.AppImage": "4a1d20dff9b34206f15f8fe69f70973cb2bbcbf354fea0d693168981e3d40840"
+      }
     },
     {
       "version": "1.0.0",
