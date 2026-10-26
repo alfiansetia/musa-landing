@@ -45,7 +45,7 @@ tools/build.mjs       Generator (Node >= 18, tanpa dependensi). Dijalankan
 
 Dockerfile            Multi-stage: node:20-alpine (build) → nginx:alpine (serve).
 nginx.conf            Config nginx: try_files, 301 /release.html, cache /downloads/.
-docker-compose.yml    Jalankan lokal: `docker compose up --build` (+ SITE_URL/PORT).
+docker-compose.yml    Jalankan lokal: `docker compose up --build` (+ SITE_URL).
 .dockerignore         Batasi konteks build (tanpa .git).
 .gitignore            generated (rilis/, version.json, sitemap.xml) + downloads/v*/
                       tidak di-commit — dibangun ulang saat deploy.
@@ -217,7 +217,6 @@ git clone <repo-ini> /opt/musa-landing   # = PROJECT_PATH
 | `PROJECT_PATH` | ya    | `/opt/musa-landing`                       |
 | `SSH_PORT`     | tidak | default `22`                              |
 | `SITE_URL`     | tidak | `https://musa.kacangan.net` (canonical produksi) |
-| `PORT`         | tidak | mapping host opsional, default `8080`     |
 
 **3. Push ke `main`** — workflow `.github/workflows/deploy.yml` otomatis:
 SSH → `git pull` → tulis `.env` dari Secrets → `docker compose up --build -d`
@@ -237,8 +236,8 @@ Catatan:
 
 - `container_name: musa-landing` = hostname di `app-network`. Jangan ganti
   tanpa update config tunnel.
-- Mapping `ports:` hanya untuk cek langsung/debug. Hapus blok itu kalau
-  mau tunnel-only.
+- Tanpa `ports:` — container hanya reachable via `app-network`
+  (tunnel). Tidak terekspos via IP:port host.
 - Healthcheck (`GET /rilis/`) memudahkan deteksi container belum siap.
 
 ## Deploy lokal (Docker)
@@ -247,13 +246,13 @@ Catatan:
 # Butuh network-nya juga (sekali saja):
 docker network create app-network
 docker compose up --build
-# buka http://localhost:8080/ dan http://localhost:8080/rilis/
+# akses via tunnel -> http://musa-landing:80
+# cek lokal cepat (tanpa ubah compose):
+#   docker run --rm -p 8080:80 musa-landing:latest
+#   # buka http://localhost:8080/
 
 # Domain lain (canonical/OG/sitemap + page di version.json ikut ganti):
 SITE_URL=https://musa.kacangan.net docker compose up --build
-
-# Port lain:
-PORT=9000 docker compose up --build
 ```
 
 Isi compose (`docker-compose.yml`): build dari `Dockerfile`

@@ -22,6 +22,6 @@ jobs:
           script: |
             cd ${{ secrets.PROJECT_PATH }}
             git pull origin main
-            printf 'SITE_URL=%s\nPORT=%s\n' '${{ secrets.SITE_URL }}' '${{ secrets.PORT }}' > .env
+            printf 'SITE_URL=%s\n' '${{ secrets.SITE_URL }}' > .env
             docker compose up --build -d
             docker image prune -f

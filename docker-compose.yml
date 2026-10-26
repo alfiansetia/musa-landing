@@ -6,10 +6,8 @@ services:
       args:
         SITE_URL: ${SITE_URL:-https://musa.kacangan.net}
     image: musa-landing:latest
-    # Akses utama lewat tunnel (app-network) sebagai http://musa-landing:80.
-    # Mapping ports di bawah opsional — hapus kalau mau tunnel-only.
-    ports:
-      - "${PORT:-8080}:80"
+    # Akses hanya lewat tunnel (app-network) sebagai http://musa-landing:80.
+    # Tanpa mapping ports — tidak terekspos via IP:port host.
     networks:
       - app-network
     restart: unless-stopped
